@@ -22,16 +22,13 @@ namespace DxCrm.UserControls
     public partial class MemberLstUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         BindingList<Member> dataSource = null;
-        
+        int editedRowHandle = -123123;
 
         public MemberLstUserControl()
         {
 
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            
-
-            //gridView.GetDetailView().
 
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += Bw_DoWork;
@@ -44,18 +41,20 @@ namespace DxCrm.UserControls
                     bw.RunWorkerAsync();
             };
 
-            //this.gridView.EditFormPrepared += (sender, e) =>
-            //{
-            //    var a = (Member)gridView.GetRow(e.RowHandle);
-            //    //a.Phones = new BindingList<Telephone>();
-
-
-            //    //a.Phones = new List<Telephone>();
-
-            //    //(gridView.OptionsEditForm.CustomEditFormLayout as MemberUserControl).SetModel(new List<Member>() {
-            //    //a
-            //    //});
-            //};
+            this.gridView.RowUpdated += (sender, e) =>
+            {
+                var newMember = (gridView.DataSource as BindingList<Member>).Where(m => m.Id == new MongoDB.Bson.ObjectId()).ToList();
+                if (newMember.Count > 0)
+                    DbManager.Instance.InsertMany(newMember);
+                else
+                {
+                    if (editedRowHandle != -123123)
+                    {
+                        var toEdit = (Member)gridView.GetRow(editedRowHandle);
+                        DbManager.Instance.UpdateOneAsync(Builders<Member>.Filter.Eq(m => m.Id, toEdit.Id), toEdit);
+                    }
+                }
+            };
         }
 
 
@@ -86,46 +85,22 @@ namespace DxCrm.UserControls
             Refresh_Datasource();
         }
 
+        private void gridView_DoubleClick(object sender, EventArgs e)
+        {
+            GridView view = (GridView)sender;
+            Point pt = view.GridControl.PointToClient(Control.MousePosition);
+            DoRowClick(view, pt);
+        }
+
         #endregion
 
-#region Methods
+        #region Methods
 
         private void Refresh_Datasource()
         {
             try
             {
-                //dataSource = new BindingList<Member>(DbManager.Instance.FindAsync(FilterDefinition<Member>.Empty));
-
-
-                dataSource = new BindingList<Member>() {
-                    new Member()
-                    {
-                        Addresses = new BindingList<Address> (){ new Address() {
-                            PostalCode = 14545,
-                            Region = "Asdasd",
-                            Street = "Street",
-                            StreetNo ="7"
-                        } },
-                        Age = 18,
-                        Birthdate = DateTime.Now,
-                        Emails = new BindingList<string> () {"myEmail@email.com", "myEmail2@email.com"},
-                        ExpirationDate = DateTime.Now,
-                        Birthplace = "BirthPlace",
-                        FatherName = "FathernName",
-                        IsActive = true,
-                        Job = "Job",
-                        MotherName = "MotherName",
-                         Name= " Name:",
-                         Notes = "Notes",
-                         Phones = new BindingList<Telephone>() {new Telephone() { Number = "6944757940", Type=TelephoneType.Mobile} },
-                         SubscriptionDate = DateTime.Now,
-                         Surname = "Surname555",
-                         Type = new MemberType () {Description="Type", Id = new MongoDB.Bson.ObjectId()},
-                         Id = new MongoDB.Bson.ObjectId(),
-                         AM = 1233,
-SubscriptionYear = 2107                         
-                    }
-                };
+                dataSource = new BindingList<Member>(DbManager.Instance.FindAsync(FilterDefinition<Member>.Empty));
             }
             catch (Exception ex)
             {
@@ -135,9 +110,7 @@ SubscriptionYear = 2107
             }
             finally
             {
-                //bsiRecordsCount.Caption = "RECORDS : " + (dataSource != null ? dataSource.Count : 0);
-                
-                
+                bsiRecordsCount.Caption = "RECORDS : " + (dataSource != null ? dataSource.Count : 0);
             }
         }
 
@@ -149,10 +122,7 @@ SubscriptionYear = 2107
                 gridControl.DataSource = dataSource;
                 gridView.OptionsBehavior.EditingMode = GridEditingMode.EditForm;
                 gridView.OptionsEditForm.CustomEditFormLayout = new MemberUserControl();
-                //gridView.Columns[2].Visible = false;
-                //gridView.Columns["MotherName"].Visible = false;
             }
-
         }
 
         private void Bw_DoWork(object sender, DoWorkEventArgs e)
@@ -160,24 +130,15 @@ SubscriptionYear = 2107
             Refresh_Datasource();
         }
 
-        #endregion
-
-        //private void gridView_DoubleClick(object sender, EventArgs e)
-        //{
-        //    GridView view = (GridView)sender;
-        //    Point pt = view.GridControl.PointToClient(Control.MousePosition);
-
-        //    DoRowClick(view, pt);
-        //}
-
         private void DoRowClick(GridView view, Point pt)
         {
             GridHitInfo info = view.CalcHitInfo(pt);
-            if (info.InRow || info.InRowCell)
-            {
-                var row = view.GetRow(info.RowHandle);
-                Program.MainForm.SetContentOfPage(MainForm.PageTitle.Member_Edit, (Member)row);
-            }
+            if (info.InDataRow && (info.InRow || info.InRowCell))
+                editedRowHandle = info.RowHandle;
         }
+
+#endregion
+
+        
     }
 }

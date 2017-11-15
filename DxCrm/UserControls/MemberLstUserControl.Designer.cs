@@ -69,6 +69,7 @@
             this.gridView.OptionsDetail.AllowOnlyOneMasterRowExpanded = true;
             this.gridView.OptionsDetail.EnableMasterViewMode = false;
             this.gridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // ribbonControl
             // 
