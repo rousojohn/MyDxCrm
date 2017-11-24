@@ -16,11 +16,13 @@ using DevExpress.XtraGrid.Views.Grid;
 using DxCrm.Classes;
 using DevExpress.XtraGrid;
 using MongoDB.Driver;
+using DevExpress.XtraBars;
 
 namespace DxCrm.UserControls
 {
     public partial class MemberUserControl : EditFormUserControl
     {
+
         public MemberUserControl()
         {
             InitializeComponent();
@@ -29,8 +31,19 @@ namespace DxCrm.UserControls
             this.txtTypeEdit.Properties.DropDownRows = list.Count;
             this.txtTypeEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.txtTypeEdit.Properties.AutoSearchColumnIndex = 1;
+        }
 
-           
+        public List<BarButtonItem> GetRibbonButtons ()
+        {
+            return new List<BarButtonItem>()
+            {
+                this.bbiClose,
+                this.bbiDelete,
+                this.bbiReset,
+                this.bbiSave,
+                this.bbiSaveAndClose,
+                this.bbiSaveAndNew
+            };
         }
 
         public MemberUserControl(Member m)
@@ -52,5 +65,6 @@ namespace DxCrm.UserControls
             }
         }
 
+      
     }
 }

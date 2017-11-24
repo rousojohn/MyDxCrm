@@ -23,6 +23,7 @@ namespace DxCrm.UserControls
     {
         BindingList<Member> dataSource = null;
         int editedRowHandle = -123123;
+        private MemberUserControl memberEditForm = new MemberUserControl();
 
         public MemberLstUserControl()
         {
@@ -55,6 +56,8 @@ namespace DxCrm.UserControls
                     }
                 }
             };
+
+            
         }
 
 
@@ -121,7 +124,36 @@ namespace DxCrm.UserControls
             {
                 gridControl.DataSource = dataSource;
                 gridView.OptionsBehavior.EditingMode = GridEditingMode.EditForm;
-                gridView.OptionsEditForm.CustomEditFormLayout = new MemberUserControl();
+                 //memberEditForm = new MemberUserControl();
+                //List<BarButtonItem> controlBtns = memberEditForm.GetRibbonButtons();
+                //controlBtns.Where(btn => btn.Name == "bbiSave").FirstOrDefault().ItemClick += (sender1, e1) =>
+                //  {
+                      
+                //  };
+                //controlBtns.Where(btn => btn.Name == "bbiClose").FirstOrDefault().ItemClick += (sender1, e1) =>
+                //{
+                //    //gridView.HideEditForm();
+                //    gridView.CancelUpdateCurrentRow();
+                //};
+                //controlBtns.Where(btn => btn.Name == "bbiDelete").FirstOrDefault().ItemClick += (sender1, e1) =>
+                //{
+                //    Console.WriteLine("bbiDelete Clicked");
+                //};
+                //controlBtns.Where(btn => btn.Name == "bbiReset").FirstOrDefault().ItemClick += (sender1, e1) =>
+                //{
+                //    Console.WriteLine("bbiReset Clicked");
+                //};
+                //controlBtns.Where(btn => btn.Name == "bbiSaveAndClose").FirstOrDefault().ItemClick += (sender1, e1) =>
+                //{
+                //    gridView.CloseEditForm();
+                    
+                //};
+                //controlBtns.Where(btn => btn.Name == "bbiSaveAndNew").FirstOrDefault().ItemClick += (sender1, e1) =>
+                //{
+                //    Console.WriteLine("bbiSaveAndNew Clicked");
+                //};
+
+                gridView.OptionsEditForm.CustomEditFormLayout = memberEditForm;
             }
         }
 
@@ -137,8 +169,57 @@ namespace DxCrm.UserControls
                 editedRowHandle = info.RowHandle;
         }
 
-#endregion
 
-        
+        #endregion
+
+
+        public IEnumerable<Control> GetAll(Control control, Type type)
+        {
+            var controls = control.Controls.Cast<Control>();
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == type);
+        }
+
+
+        private void gridView_ShowingPopupEditForm(object sender, ShowingPopupEditFormEventArgs e)
+        {
+            //memberEditForm.EditForm = e.EditForm;
+
+
+            //List<Control> btns = GetAll(e.EditForm, typeof(BarButtonItem)).ToList();
+            //BarButtonItem save = btns.OfType<BarButtonItem>().Where(bbi => bbi.Name != null && bbi.Name == "bbiSave").FirstOrDefault();
+            //save.Caption = "asdasdasdasD";
+            //SimpleButton updateBtn = btns.OfType<SimpleButton>().Where(sb => sb.Tag != null && sb.Tag.ToString() == "OkButton").FirstOrDefault();
+            //updateBtn.Click += updateBtn_Click;
+
+            /* foreach (Control control in e.EditForm.Controls)
+             {
+                 foreach (Control nestedControl in control.Controls)
+                 {
+                     if (!(nestedControl is PanelControl))
+                     {
+                         continue;
+                     }
+                     foreach (Control button in nestedControl.Controls)
+                     {
+                         if (!(button is SimpleButton))
+                         {
+                             continue;
+                         }
+                         var simpleButton = button as SimpleButton;
+                         //simpleButton.Click -= editFormUpdateButton_Click;
+                         //simpleButton.Click += editFormUpdateButton_Click;
+                     }
+                 }
+             }*/
+        }
+
+        private void EditForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+                var a = e;
+                var c = 1;
+        }
     }
 }
