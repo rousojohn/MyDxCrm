@@ -19,7 +19,8 @@ namespace DxCrm.Classes
             {typeof(Member), "members" },
             {typeof(MemberType), "memberTypes" },
             {typeof(IncomeType), "incomeTypes" },
-            {typeof(OutcomeType), "outcomeTypes" }
+            {typeof(OutcomeType), "outcomeTypes" },
+            {typeof(Supplier), "suppliers" }
         };
 
         private DbManager()
@@ -111,13 +112,9 @@ namespace DxCrm.Classes
                 {
                     var itemDoc = item.ToBsonDocument();
                     models[i++] = new ReplaceOneModel<BsonDocument>(new BsonDocument("_id", itemDoc["_id"]), itemDoc);
-                    //models[i++] = new ReplaceOneModel<T>(filter, item) { IsUpsert = true };
                 }
                 return await collection.BulkWriteAsync(models, null, cnclToken.Token);
-                //return await collection.UpdateManyAsync(filter, update, new UpdateOptions() { IsUpsert = true }, cnclToken.Token);
             }
-            //var deleteResult = await DeleteManyAsync<T>(filter);
-            //if (deleteResult.IsAcknowledged)
         }
     }
 }

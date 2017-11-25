@@ -33,7 +33,7 @@ namespace DxCrm
             {PageTitle.Member_List, (object o)=>{return new MemberLstUserControl(); } },
             {PageTitle.Member_New, (object o) => {return new MemberUserControl(); } },
             {PageTitle.Member_Edit, (object o) =>{return new MemberUserControl((Member)o); } },
-            {PageTitle.Supplier_List, null },
+            {PageTitle.Supplier_List, (object o) => {return new SuppliersLstUserControl(); } },
             {PageTitle.Supplier_New, null },
             {PageTitle.Params_MemberType, (object o) => {return new MemberTypeLstUserControl(); } },
             {PageTitle.Params_IncomeType, (object o) => {return new IncomeTypeLstUserControl(); } },

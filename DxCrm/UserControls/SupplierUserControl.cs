@@ -20,29 +20,23 @@ using DevExpress.XtraBars;
 
 namespace DxCrm.UserControls
 {
-    public partial class MemberUserControl : EditFormUserControl
+    public partial class SupplierUserControl : EditFormUserControl
     {
-
-        public MemberUserControl()
-        {
-            InitializeComponent();
-            var list =  new BindingList<MemberType>(DbManager.Instance.FindAsync(FilterDefinition<MemberType>.Empty));
-            this.txtTypeEdit.Properties.DataSource = list;
-            this.txtTypeEdit.Properties.DropDownRows = list.Count;
-            this.txtTypeEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
-            this.txtTypeEdit.Properties.AutoSearchColumnIndex = 1;
-        }
-
-       
-
-        public MemberUserControl(Member m)
+        public SupplierUserControl()
         {
             InitializeComponent();
         }
 
-        public void SetModel(List<Member> m)
+        public SupplierUserControl(Supplier m)
+        {
+            InitializeComponent();
+        }
+
+        public void SetModel(List<Supplier> m)
         {
             dataLayoutControl1.DataSource = m;
-        }      
+        }
+
+             
     }
 }

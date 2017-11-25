@@ -30,15 +30,6 @@
         {
             DevExpress.XtraLayout.LayoutControlItem txtBirthplace;
             this.txtBirthplaceEdit = new DevExpress.XtraEditors.TextEdit();
-            this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiSaveAndClose = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiSaveAndNew = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiReset = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
-            this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.txtTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.emailGrid = new DevExpress.XtraGrid.GridControl();
@@ -61,6 +52,13 @@
             this.txtNotesEdit = new DevExpress.XtraEditors.MemoEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.txtFatherName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtBirthday = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtMotherName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.txtAm = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtSubYear = new DevExpress.XtraLayout.LayoutControlItem();
@@ -70,19 +68,11 @@
             this.txtSubDt = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtNotes = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtType = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.txtFatherName = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtBirthday = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtMotherName = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtSurname = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtName = new DevExpress.XtraLayout.LayoutControlItem();
             txtBirthplace = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(txtBirthplace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthplaceEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTypeEdit.Properties)).BeginInit();
@@ -109,6 +99,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNotesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFatherName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMotherName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSubYear)).BeginInit();
@@ -118,13 +115,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubDt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFatherName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMotherName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSurname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
             this.SuspendLayout();
@@ -144,97 +134,10 @@
             this.SetBoundFieldName(this.txtBirthplaceEdit, "Birthplace");
             this.SetBoundPropertyName(this.txtBirthplaceEdit, "EditValue");
             this.txtBirthplaceEdit.Location = new System.Drawing.Point(504, 94);
-            this.txtBirthplaceEdit.MenuManager = this.mainRibbonControl;
             this.txtBirthplaceEdit.Name = "txtBirthplaceEdit";
             this.txtBirthplaceEdit.Size = new System.Drawing.Size(272, 20);
             this.txtBirthplaceEdit.StyleController = this.dataLayoutControl1;
             this.txtBirthplaceEdit.TabIndex = 9;
-            // 
-            // mainRibbonControl
-            // 
-            this.SetBoundPropertyName(this.mainRibbonControl, "");
-            this.mainRibbonControl.ExpandCollapseItem.Id = 0;
-            this.mainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.mainRibbonControl.ExpandCollapseItem,
-            this.bbiSave,
-            this.bbiSaveAndClose,
-            this.bbiSaveAndNew,
-            this.bbiReset,
-            this.bbiDelete,
-            this.bbiClose});
-            this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 10;
-            this.mainRibbonControl.Name = "mainRibbonControl";
-            this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.mainRibbonPage});
-            this.mainRibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
-            this.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.mainRibbonControl.Size = new System.Drawing.Size(800, 116);
-            this.mainRibbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
-            // 
-            // bbiSave
-            // 
-            this.bbiSave.Caption = "Save";
-            this.bbiSave.Id = 2;
-            this.bbiSave.ImageOptions.ImageUri.Uri = "Save";
-            this.bbiSave.Name = "bbiSave";
-            // 
-            // bbiSaveAndClose
-            // 
-            this.bbiSaveAndClose.Caption = "Save And Close";
-            this.bbiSaveAndClose.Id = 3;
-            this.bbiSaveAndClose.ImageOptions.ImageUri.Uri = "SaveAndClose";
-            this.bbiSaveAndClose.Name = "bbiSaveAndClose";
-            // 
-            // bbiSaveAndNew
-            // 
-            this.bbiSaveAndNew.Caption = "Save And New";
-            this.bbiSaveAndNew.Id = 4;
-            this.bbiSaveAndNew.ImageOptions.ImageUri.Uri = "SaveAndNew";
-            this.bbiSaveAndNew.Name = "bbiSaveAndNew";
-            // 
-            // bbiReset
-            // 
-            this.bbiReset.Caption = "Reset Changes";
-            this.bbiReset.Id = 5;
-            this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
-            this.bbiReset.Name = "bbiReset";
-            // 
-            // bbiDelete
-            // 
-            this.bbiDelete.Caption = "Delete";
-            this.bbiDelete.Id = 6;
-            this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
-            this.bbiDelete.Name = "bbiDelete";
-            // 
-            // bbiClose
-            // 
-            this.bbiClose.Caption = "Close";
-            this.bbiClose.Id = 7;
-            this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
-            this.bbiClose.Name = "bbiClose";
-            //this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
-            // 
-            // mainRibbonPage
-            // 
-            this.mainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.mainRibbonPageGroup});
-            this.mainRibbonPage.MergeOrder = 0;
-            this.mainRibbonPage.Name = "mainRibbonPage";
-            this.mainRibbonPage.Text = "Home";
-            // 
-            // mainRibbonPageGroup
-            // 
-            this.mainRibbonPageGroup.AllowTextClipping = false;
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSave);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndClose);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndNew);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiReset);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiDelete);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiClose);
-            this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
-            this.mainRibbonPageGroup.ShowCaptionButton = false;
-            this.mainRibbonPageGroup.Text = "Tasks";
             // 
             // dataLayoutControl1
             // 
@@ -258,11 +161,11 @@
             this.dataLayoutControl1.Controls.Add(this.dateEdit2);
             this.dataLayoutControl1.Controls.Add(this.txtNotesEdit);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 116);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(896, 193, 450, 400);
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(800, 484);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(800, 600);
             this.dataLayoutControl1.TabIndex = 0;
             // 
             // txtTypeEdit
@@ -270,7 +173,6 @@
             this.SetBoundFieldName(this.txtTypeEdit, "TypeId");
             this.SetBoundPropertyName(this.txtTypeEdit, "EditValue");
             this.txtTypeEdit.Location = new System.Drawing.Point(552, 70);
-            this.txtTypeEdit.MenuManager = this.mainRibbonControl;
             this.txtTypeEdit.Name = "txtTypeEdit";
             this.txtTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -284,11 +186,10 @@
             // 
             this.SetBoundFieldName(this.emailGrid, "Emails");
             this.SetBoundPropertyName(this.emailGrid, "DataSource");
-            this.emailGrid.Location = new System.Drawing.Point(402, 278);
+            this.emailGrid.Location = new System.Drawing.Point(402, 332);
             this.emailGrid.MainView = this.emailGridView;
-            this.emailGrid.MenuManager = this.mainRibbonControl;
             this.emailGrid.Name = "emailGrid";
-            this.emailGrid.Size = new System.Drawing.Size(374, 182);
+            this.emailGrid.Size = new System.Drawing.Size(374, 244);
             this.emailGrid.TabIndex = 12;
             this.emailGrid.UseEmbeddedNavigator = true;
             this.emailGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -303,11 +204,10 @@
             // 
             this.SetBoundFieldName(this.phoneGrid, "Phones");
             this.SetBoundPropertyName(this.phoneGrid, "DataSource");
-            this.phoneGrid.Location = new System.Drawing.Point(24, 278);
+            this.phoneGrid.Location = new System.Drawing.Point(24, 332);
             this.phoneGrid.MainView = this.phoneGridView;
-            this.phoneGrid.MenuManager = this.mainRibbonControl;
             this.phoneGrid.Name = "phoneGrid";
-            this.phoneGrid.Size = new System.Drawing.Size(374, 182);
+            this.phoneGrid.Size = new System.Drawing.Size(374, 244);
             this.phoneGrid.TabIndex = 11;
             this.phoneGrid.UseEmbeddedNavigator = true;
             this.phoneGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -324,9 +224,8 @@
             this.SetBoundPropertyName(this.addressGrid, "DataSource");
             this.addressGrid.Location = new System.Drawing.Point(24, 118);
             this.addressGrid.MainView = this.addressGridView;
-            this.addressGrid.MenuManager = this.mainRibbonControl;
             this.addressGrid.Name = "addressGrid";
-            this.addressGrid.Size = new System.Drawing.Size(752, 156);
+            this.addressGrid.Size = new System.Drawing.Size(752, 210);
             this.addressGrid.TabIndex = 10;
             this.addressGrid.UseEmbeddedNavigator = true;
             this.addressGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -342,7 +241,6 @@
             this.SetBoundFieldName(this.txtSurnameEdit, "Surname");
             this.SetBoundPropertyName(this.txtSurnameEdit, "EditValue");
             this.txtSurnameEdit.Location = new System.Drawing.Point(114, 12);
-            this.txtSurnameEdit.MenuManager = this.mainRibbonControl;
             this.txtSurnameEdit.Name = "txtSurnameEdit";
             this.txtSurnameEdit.Size = new System.Drawing.Size(284, 20);
             this.txtSurnameEdit.StyleController = this.dataLayoutControl1;
@@ -353,7 +251,6 @@
             this.SetBoundFieldName(this.txtNameEdit, "Name");
             this.SetBoundPropertyName(this.txtNameEdit, "EditValue");
             this.txtNameEdit.Location = new System.Drawing.Point(504, 12);
-            this.txtNameEdit.MenuManager = this.mainRibbonControl;
             this.txtNameEdit.Name = "txtNameEdit";
             this.txtNameEdit.Size = new System.Drawing.Size(284, 20);
             this.txtNameEdit.StyleController = this.dataLayoutControl1;
@@ -364,7 +261,6 @@
             this.SetBoundFieldName(this.txtFatherNameEdit, "FatherName");
             this.SetBoundPropertyName(this.txtFatherNameEdit, "EditValue");
             this.txtFatherNameEdit.Location = new System.Drawing.Point(126, 70);
-            this.txtFatherNameEdit.MenuManager = this.mainRibbonControl;
             this.txtFatherNameEdit.Name = "txtFatherNameEdit";
             this.txtFatherNameEdit.Size = new System.Drawing.Size(272, 20);
             this.txtFatherNameEdit.StyleController = this.dataLayoutControl1;
@@ -375,7 +271,6 @@
             this.SetBoundFieldName(this.txtMotherNameEdit, "MotherName");
             this.SetBoundPropertyName(this.txtMotherNameEdit, "EditValue");
             this.txtMotherNameEdit.Location = new System.Drawing.Point(504, 70);
-            this.txtMotherNameEdit.MenuManager = this.mainRibbonControl;
             this.txtMotherNameEdit.Name = "txtMotherNameEdit";
             this.txtMotherNameEdit.Size = new System.Drawing.Size(272, 20);
             this.txtMotherNameEdit.StyleController = this.dataLayoutControl1;
@@ -387,7 +282,6 @@
             this.SetBoundPropertyName(this.txtBirthdayEdit, "EditValue");
             this.txtBirthdayEdit.EditValue = null;
             this.txtBirthdayEdit.Location = new System.Drawing.Point(126, 94);
-            this.txtBirthdayEdit.MenuManager = this.mainRibbonControl;
             this.txtBirthdayEdit.Name = "txtBirthdayEdit";
             this.txtBirthdayEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -402,7 +296,6 @@
             this.SetBoundFieldName(this.txtAmEdit, "AM");
             this.SetBoundPropertyName(this.txtAmEdit, "EditValue");
             this.txtAmEdit.Location = new System.Drawing.Point(126, 70);
-            this.txtAmEdit.MenuManager = this.mainRibbonControl;
             this.txtAmEdit.Name = "txtAmEdit";
             this.txtAmEdit.Size = new System.Drawing.Size(202, 20);
             this.txtAmEdit.StyleController = this.dataLayoutControl1;
@@ -413,7 +306,6 @@
             this.SetBoundFieldName(this.txtSubDtEdit, "SubscriptionYear");
             this.SetBoundPropertyName(this.txtSubDtEdit, "EditValue");
             this.txtSubDtEdit.Location = new System.Drawing.Point(126, 94);
-            this.txtSubDtEdit.MenuManager = this.mainRibbonControl;
             this.txtSubDtEdit.Name = "txtSubDtEdit";
             this.txtSubDtEdit.Size = new System.Drawing.Size(116, 20);
             this.txtSubDtEdit.StyleController = this.dataLayoutControl1;
@@ -424,7 +316,6 @@
             this.SetBoundFieldName(this.txtJobEdit, "Job");
             this.SetBoundPropertyName(this.txtJobEdit, "EditValue");
             this.txtJobEdit.Location = new System.Drawing.Point(126, 118);
-            this.txtJobEdit.MenuManager = this.mainRibbonControl;
             this.txtJobEdit.Name = "txtJobEdit";
             this.txtJobEdit.Size = new System.Drawing.Size(650, 20);
             this.txtJobEdit.StyleController = this.dataLayoutControl1;
@@ -435,7 +326,6 @@
             this.SetBoundFieldName(this.txtActiveEdit, "IsActive");
             this.SetBoundPropertyName(this.txtActiveEdit, "EditValue");
             this.txtActiveEdit.Location = new System.Drawing.Point(332, 70);
-            this.txtActiveEdit.MenuManager = this.mainRibbonControl;
             this.txtActiveEdit.Name = "txtActiveEdit";
             this.txtActiveEdit.Properties.Caption = "checkEdit1";
             this.txtActiveEdit.Size = new System.Drawing.Size(114, 19);
@@ -447,7 +337,6 @@
             this.SetBoundPropertyName(this.dateEdit1, "");
             this.dateEdit1.EditValue = null;
             this.dateEdit1.Location = new System.Drawing.Point(348, 94);
-            this.dateEdit1.MenuManager = this.mainRibbonControl;
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -463,7 +352,6 @@
             this.SetBoundPropertyName(this.dateEdit2, "EditValue");
             this.dateEdit2.EditValue = null;
             this.dateEdit2.Location = new System.Drawing.Point(603, 94);
-            this.dateEdit2.MenuManager = this.mainRibbonControl;
             this.dateEdit2.Name = "dateEdit2";
             this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -478,9 +366,8 @@
             this.SetBoundFieldName(this.txtNotesEdit, "Note");
             this.SetBoundPropertyName(this.txtNotesEdit, "EditValue");
             this.txtNotesEdit.Location = new System.Drawing.Point(126, 142);
-            this.txtNotesEdit.MenuManager = this.mainRibbonControl;
             this.txtNotesEdit.Name = "txtNotesEdit";
-            this.txtNotesEdit.Size = new System.Drawing.Size(650, 318);
+            this.txtNotesEdit.Size = new System.Drawing.Size(650, 434);
             this.txtNotesEdit.StyleController = this.dataLayoutControl1;
             this.txtNotesEdit.TabIndex = 21;
             // 
@@ -494,7 +381,7 @@
             this.txtName});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(800, 484);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(800, 600);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // tabbedControlGroup1
@@ -503,10 +390,78 @@
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
             this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup2;
             this.tabbedControlGroup1.SelectedTabPageIndex = 0;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(780, 440);
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(780, 556);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2,
             this.layoutControlGroup3});
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.txtFatherName,
+            this.txtBirthday,
+            this.txtMotherName,
+            txtBirthplace,
+            this.layoutControlItem7,
+            this.layoutControlItem8,
+            this.layoutControlItem9});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(756, 510);
+            // 
+            // txtFatherName
+            // 
+            this.txtFatherName.Control = this.txtFatherNameEdit;
+            this.txtFatherName.Location = new System.Drawing.Point(0, 0);
+            this.txtFatherName.Name = "txtFatherName";
+            this.txtFatherName.Size = new System.Drawing.Size(378, 24);
+            this.txtFatherName.Text = "rsFatherName";
+            this.txtFatherName.TextSize = new System.Drawing.Size(99, 13);
+            // 
+            // txtBirthday
+            // 
+            this.txtBirthday.Control = this.txtBirthdayEdit;
+            this.txtBirthday.Location = new System.Drawing.Point(0, 24);
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.Size = new System.Drawing.Size(378, 24);
+            this.txtBirthday.Text = "rsBirthday";
+            this.txtBirthday.TextSize = new System.Drawing.Size(99, 13);
+            // 
+            // txtMotherName
+            // 
+            this.txtMotherName.Control = this.txtMotherNameEdit;
+            this.txtMotherName.Location = new System.Drawing.Point(378, 0);
+            this.txtMotherName.Name = "txtMotherName";
+            this.txtMotherName.Size = new System.Drawing.Size(378, 24);
+            this.txtMotherName.Text = "rsMotherName";
+            this.txtMotherName.TextSize = new System.Drawing.Size(99, 13);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.addressGrid;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(756, 214);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.phoneGrid;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 262);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(378, 248);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.emailGrid;
+            this.layoutControlItem9.Location = new System.Drawing.Point(378, 262);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(378, 248);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem9.TextVisible = false;
             // 
             // layoutControlGroup3
             // 
@@ -521,7 +476,7 @@
             this.txtType});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(756, 394);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(756, 510);
             // 
             // txtAm
             // 
@@ -587,7 +542,7 @@
             this.txtNotes.CustomizationFormText = "rsNotes";
             this.txtNotes.Location = new System.Drawing.Point(0, 72);
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(756, 322);
+            this.txtNotes.Size = new System.Drawing.Size(756, 438);
             this.txtNotes.Text = "rsNotes";
             this.txtNotes.TextSize = new System.Drawing.Size(99, 13);
             // 
@@ -600,74 +555,6 @@
             this.txtType.Size = new System.Drawing.Size(330, 24);
             this.txtType.Text = "rsType";
             this.txtType.TextSize = new System.Drawing.Size(99, 13);
-            // 
-            // layoutControlGroup2
-            // 
-            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.txtFatherName,
-            this.txtBirthday,
-            this.txtMotherName,
-            txtBirthplace,
-            this.layoutControlItem7,
-            this.layoutControlItem8,
-            this.layoutControlItem9});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(756, 394);
-            // 
-            // txtFatherName
-            // 
-            this.txtFatherName.Control = this.txtFatherNameEdit;
-            this.txtFatherName.Location = new System.Drawing.Point(0, 0);
-            this.txtFatherName.Name = "txtFatherName";
-            this.txtFatherName.Size = new System.Drawing.Size(378, 24);
-            this.txtFatherName.Text = "rsFatherName";
-            this.txtFatherName.TextSize = new System.Drawing.Size(99, 13);
-            // 
-            // txtBirthday
-            // 
-            this.txtBirthday.Control = this.txtBirthdayEdit;
-            this.txtBirthday.Location = new System.Drawing.Point(0, 24);
-            this.txtBirthday.Name = "txtBirthday";
-            this.txtBirthday.Size = new System.Drawing.Size(378, 24);
-            this.txtBirthday.Text = "rsBirthday";
-            this.txtBirthday.TextSize = new System.Drawing.Size(99, 13);
-            // 
-            // txtMotherName
-            // 
-            this.txtMotherName.Control = this.txtMotherNameEdit;
-            this.txtMotherName.Location = new System.Drawing.Point(378, 0);
-            this.txtMotherName.Name = "txtMotherName";
-            this.txtMotherName.Size = new System.Drawing.Size(378, 24);
-            this.txtMotherName.Text = "rsMotherName";
-            this.txtMotherName.TextSize = new System.Drawing.Size(99, 13);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.addressGrid;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(756, 160);
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.phoneGrid;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 208);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(378, 186);
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem8.TextVisible = false;
-            // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.emailGrid;
-            this.layoutControlItem9.Location = new System.Drawing.Point(378, 208);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(378, 186);
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem9.TextVisible = false;
             // 
             // txtSurname
             // 
@@ -694,12 +581,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.Controls.Add(this.dataLayoutControl1);
-            this.Controls.Add(this.mainRibbonControl);
             this.Name = "MemberUserControl";
             this.Size = new System.Drawing.Size(800, 600);
             ((System.ComponentModel.ISupportInitialize)(txtBirthplace)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthplaceEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtTypeEdit.Properties)).EndInit();
@@ -726,6 +611,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNotesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFatherName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMotherName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSubYear)).EndInit();
@@ -735,17 +627,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubDt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFatherName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMotherName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSurname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -753,15 +637,6 @@
 
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraBars.Ribbon.RibbonControl mainRibbonControl;
-        private DevExpress.XtraBars.Ribbon.RibbonPage mainRibbonPage;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup mainRibbonPageGroup;
-        private DevExpress.XtraBars.BarButtonItem bbiSave;
-        private DevExpress.XtraBars.BarButtonItem bbiSaveAndClose;
-        private DevExpress.XtraBars.BarButtonItem bbiSaveAndNew;
-        private DevExpress.XtraBars.BarButtonItem bbiReset;
-        private DevExpress.XtraBars.BarButtonItem bbiDelete;
-        private DevExpress.XtraBars.BarButtonItem bbiClose;
         private DevExpress.XtraEditors.TextEdit txtSurnameEdit;
         private DevExpress.XtraEditors.TextEdit txtNameEdit;
         private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup1;

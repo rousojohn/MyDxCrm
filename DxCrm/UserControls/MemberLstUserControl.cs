@@ -75,11 +75,6 @@ namespace DxCrm.UserControls
 
             var result = DbManager.Instance.DeleteOneAsync(Builders<Member>.Filter.Where(u => u.Id.Equals(toDelete.Id)));
 
-            AlertControl alert = new AlertControl();
-            AlertInfo info = new AlertInfo("", result.Result.IsAcknowledged ? "Update Successful" : "Update Failed", true);
-
-            alert.Show(Program.MainForm, info);
-
             Refresh_Datasource();
         }
 
@@ -124,34 +119,6 @@ namespace DxCrm.UserControls
             {
                 gridControl.DataSource = dataSource;
                 gridView.OptionsBehavior.EditingMode = GridEditingMode.EditForm;
-                 //memberEditForm = new MemberUserControl();
-                //List<BarButtonItem> controlBtns = memberEditForm.GetRibbonButtons();
-                //controlBtns.Where(btn => btn.Name == "bbiSave").FirstOrDefault().ItemClick += (sender1, e1) =>
-                //  {
-                      
-                //  };
-                //controlBtns.Where(btn => btn.Name == "bbiClose").FirstOrDefault().ItemClick += (sender1, e1) =>
-                //{
-                //    //gridView.HideEditForm();
-                //    gridView.CancelUpdateCurrentRow();
-                //};
-                //controlBtns.Where(btn => btn.Name == "bbiDelete").FirstOrDefault().ItemClick += (sender1, e1) =>
-                //{
-                //    Console.WriteLine("bbiDelete Clicked");
-                //};
-                //controlBtns.Where(btn => btn.Name == "bbiReset").FirstOrDefault().ItemClick += (sender1, e1) =>
-                //{
-                //    Console.WriteLine("bbiReset Clicked");
-                //};
-                //controlBtns.Where(btn => btn.Name == "bbiSaveAndClose").FirstOrDefault().ItemClick += (sender1, e1) =>
-                //{
-                //    gridView.CloseEditForm();
-                    
-                //};
-                //controlBtns.Where(btn => btn.Name == "bbiSaveAndNew").FirstOrDefault().ItemClick += (sender1, e1) =>
-                //{
-                //    Console.WriteLine("bbiSaveAndNew Clicked");
-                //};
 
                 gridView.OptionsEditForm.CustomEditFormLayout = memberEditForm;
             }
@@ -184,42 +151,9 @@ namespace DxCrm.UserControls
 
         private void gridView_ShowingPopupEditForm(object sender, ShowingPopupEditFormEventArgs e)
         {
-            //memberEditForm.EditForm = e.EditForm;
-
-
-            //List<Control> btns = GetAll(e.EditForm, typeof(BarButtonItem)).ToList();
-            //BarButtonItem save = btns.OfType<BarButtonItem>().Where(bbi => bbi.Name != null && bbi.Name == "bbiSave").FirstOrDefault();
-            //save.Caption = "asdasdasdasD";
-            //SimpleButton updateBtn = btns.OfType<SimpleButton>().Where(sb => sb.Tag != null && sb.Tag.ToString() == "OkButton").FirstOrDefault();
-            //updateBtn.Click += updateBtn_Click;
-
-            /* foreach (Control control in e.EditForm.Controls)
-             {
-                 foreach (Control nestedControl in control.Controls)
-                 {
-                     if (!(nestedControl is PanelControl))
-                     {
-                         continue;
-                     }
-                     foreach (Control button in nestedControl.Controls)
-                     {
-                         if (!(button is SimpleButton))
-                         {
-                             continue;
-                         }
-                         var simpleButton = button as SimpleButton;
-                         //simpleButton.Click -= editFormUpdateButton_Click;
-                         //simpleButton.Click += editFormUpdateButton_Click;
-                     }
-                 }
-             }*/
+            e.EditForm.StartPosition = FormStartPosition.CenterParent;
         }
 
-        private void EditForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-                var a = e;
-                var c = 1;
-        }
+      
     }
 }
