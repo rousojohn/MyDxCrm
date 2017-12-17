@@ -24,6 +24,9 @@ namespace DxCrm
             Member_Edit = 2,
             Supplier_List = 10,
             Supplier_New = 11,
+            Incomes_List = 20,
+            Outcomes_List = 21,
+            Acc_Summary = 22,
             Params_MemberType = 30,
             Params_IncomeType = 31,
             Params_OutcomeType = 32
@@ -38,13 +41,17 @@ namespace DxCrm
             {PageTitle.Params_MemberType, (object o) => {return new MemberTypeLstUserControl(); } },
             {PageTitle.Params_IncomeType, (object o) => {return new IncomeTypeLstUserControl(); } },
             {PageTitle.Params_OutcomeType, (object o) => {return new OutcomeTypeLstUserControl(); } },
+            {PageTitle.Incomes_List, (object o) => {return new AccIncomeLstUserControl(); } }
         };
 
+
+#region Constructors
         public MainForm()
         {
             InitializeComponent();
         }
 
+#endregion
 
 #region Control_events
 
@@ -80,9 +87,6 @@ namespace DxCrm
             //  List --> 0      |       List --> 0      |       + linkItemIndex ( 0 )
             //  New  --> 1      |       New -->  1      |       + linkItemIndex ( 1 )
             SetContentOfPage((PageTitle)(navigationFrame.SelectedPageIndex * 10 + linkItemIndex), null);
-            //(navigationFrame.SelectedPage as NavigationPage).Controls.Add(
-            //    mapPagesToUserControls[(PageTitle)(navigationFrame.SelectedPageIndex * 10 + linkItemIndex)](null)
-            //    );
         }
 
         #endregion
@@ -95,7 +99,7 @@ namespace DxCrm
                 mapPagesToUserControls[page](model)
                 );
         }
+#endregion
 
     }
-#endregion
 }

@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AccIncome.cs" />
     <Compile Include="Classes\Address.cs" />
     <Compile Include="Classes\ApplicationSettings.cs" />
     <Compile Include="Classes\DbManager.cs" />
@@ -142,6 +143,18 @@
     <Compile Include="UserControls\SupplierUserControl.Designer.cs">
       <DependentUpon>SupplierUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AccIncomeLstUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AccIncomeLstUserControl.Designer.cs">
+      <DependentUpon>AccIncomeLstUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AccIncomeUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AccIncomeUserControl.Designer.cs">
+      <DependentUpon>AccIncomeUserControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +171,12 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="UserControls\AccIncomeLstUserControl.resx">
+      <DependentUpon>AccIncomeLstUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AccIncomeUserControl.resx">
+      <DependentUpon>AccIncomeUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\IncomeTypeLstUserControl.resx">
       <DependentUpon>IncomeTypeLstUserControl.cs</DependentUpon>
     </EmbeddedResource>

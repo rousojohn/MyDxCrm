@@ -22,24 +22,17 @@ namespace DxCrm.UserControls
         BindingList<Supplier> dataSource = null;
         int editedRowHandle = -123123;
         private SupplierUserControl SupplierEditForm = new SupplierUserControl();
+        BackgroundWorker bw = new BackgroundWorker();
 
         #region Constructors
 
         public SuppliersLstUserControl()
         {
-
-
             InitializeComponent();
             this.Dock = DockStyle.Fill;
 
-           
-
-
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += Bw_DoWork;
-            bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
-            
-
+            this.bw.DoWork += Bw_DoWork;
+            this.bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
 
             this.Load += (sender, e) =>
             {
@@ -47,7 +40,6 @@ namespace DxCrm.UserControls
                 if (!bw.IsBusy)
                     bw.RunWorkerAsync();
             };
-
             this.gridView.RowUpdated += (sender, e) =>
             {
                 var newSupplier = (gridView.DataSource as BindingList<Supplier>).Where(m => m.Id == new MongoDB.Bson.ObjectId()).ToList();
@@ -84,11 +76,34 @@ namespace DxCrm.UserControls
 
             }
 
+
+            private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
+            {
+                var selected = this.gridView.GetSelectedRows();
+                Supplier toDelete = (Supplier)gridView.GetRow(selected[0]);
+
+                var result = DbManager.Instance.DeleteOneAsync(Builders<Supplier>.Filter.Where(u => u.Id.Equals(toDelete.Id)));
+
+                this.bw.RunWorkerAsync();
+        }
+
+            private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
+            {
+                this.bw.RunWorkerAsync();
+            }
+
+            private void gridView_DoubleClick(object sender, EventArgs e)
+            {
+                GridView view = (GridView)sender;
+                Point pt = view.GridControl.PointToClient(Control.MousePosition);
+                DoRowClick(view, pt);
+            }
+
         #endregion
 
         #region Methods
 
-            private void Refresh_Datasource()
+        private void Refresh_Datasource()
             {
                 try
                 {
@@ -113,6 +128,7 @@ namespace DxCrm.UserControls
                 gridControl.DataSource = dataSource;
                 gridView.OptionsBehavior.EditingMode = GridEditingMode.EditForm;
                 gridView.OptionsEditForm.CustomEditFormLayout = SupplierEditForm;
+                gridControl.RefreshDataSource();
             }
         }
 

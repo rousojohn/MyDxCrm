@@ -1,33 +1,24 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.ComponentModel;
 
 namespace DxCrm.Classes
 {
+    public class MemberEmail
+    {
+        public string Email { get; set; }
+    }
 
     public class Member
     {
-        const string RootGroup = "<Root>";
-        //const string Photo = RootGroup + "/" + "<Photo->";
-        const string FirstNameAndLastName = RootGroup + "/" + "<FirstAndLastName->";
-        const string TabbedGroup = RootGroup + "/" + "{Tabs}";
-        const string ContactGroup = TabbedGroup + "/" + "Contact";
-        const string MoreInfoGroup = TabbedGroup + "/" + "More";
-
-        // Contact Group controls
-        const string FatherMother = ContactGroup + "/" + "<FatherMother->";
-        const string BDateAndBplace = ContactGroup + "/" + "<BDateAndBplace->";
-        const string AddressesGroup = ContactGroup + "/" + "<AddressesGroup->";
-        const string PhonesEmailsGroup = ContactGroup + "/" + "<PhonesEmailsGroup->";
-
-        // More Info Group controls
-        const string AmAndActiveAndType = MoreInfoGroup + "/" + "<AmAndActiveAndType->";
-        const string SubExpDateSubYear = MoreInfoGroup + "/" + "<SubExpDateSubYear->";
-        const string JobGroup = MoreInfoGroup + "/" + "<JobGroup->";
 
         private object emails;
         private object phones;
         private object addresses;
+
+        [BsonIgnore]
+        public int Version { get; set; }
 
         public ObjectId Id { get; set; }
 
@@ -49,7 +40,7 @@ namespace DxCrm.Classes
             {
                 if (emails == null)
                 {
-                    emails = new BindingList<string>();
+                    emails = new BindingList<MemberEmail>();
                 }
                 return emails;
             }
@@ -107,16 +98,19 @@ namespace DxCrm.Classes
 
         public int Age { get; set; }
 
-        //public MemberType Type { get; set; }
         public string TypeId;
 
 
+        [BsonIgnore]
+        public string MemberName { get; set; }
+
         public Member()
         {
+            Version = 0;
             Id = new ObjectId();
             Phones = new BindingList<Telephone>();
             Addresses = new BindingList<Address>();
-            Emails = new BindingList<string>();
+            Emails = new BindingList<MemberEmail>();
         }
 
 

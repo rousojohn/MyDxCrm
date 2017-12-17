@@ -25,70 +25,75 @@ namespace DxCrm.UserControls
         int editedRowHandle = -123123;
         private MemberUserControl memberEditForm = new MemberUserControl();
 
-        public MemberLstUserControl()
-        {
-
-            InitializeComponent();
-            this.Dock = DockStyle.Fill;
-
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += Bw_DoWork;
-            bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
-
-            this.Load += (sender, e) =>
+        #region Constructors 
+            public MemberLstUserControl()
             {
-                gridControl.DataSource = dataSource = null;
-                if (!bw.IsBusy)
-                    bw.RunWorkerAsync();
-            };
 
-            this.gridView.RowUpdated += (sender, e) =>
-            {
-                var newMember = (gridView.DataSource as BindingList<Member>).Where(m => m.Id == new MongoDB.Bson.ObjectId()).ToList();
-                if (newMember.Count > 0)
-                    DbManager.Instance.InsertMany(newMember);
-                else
+                InitializeComponent();
+                this.Dock = DockStyle.Fill;
+
+                BackgroundWorker bw = new BackgroundWorker();
+                bw.DoWork += Bw_DoWork;
+                bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
+
+                this.Load += (sender, e) =>
                 {
-                    if (editedRowHandle != -123123)
+                    gridControl.DataSource = dataSource = null;
+                    if (!bw.IsBusy)
+                        bw.RunWorkerAsync();
+                };
+
+                this.gridView.RowUpdated += (sender, e) =>
+                {
+                    var newMember = (gridView.DataSource as BindingList<Member>).Where(m => m.Id == new MongoDB.Bson.ObjectId()).ToList();
+                    if (newMember.Count > 0)
+                        DbManager.Instance.InsertMany(newMember);
+                    else
                     {
-                        var toEdit = (Member)gridView.GetRow(editedRowHandle);
-                        DbManager.Instance.UpdateOneAsync(Builders<Member>.Filter.Eq(m => m.Id, toEdit.Id), toEdit);
+                        if (editedRowHandle != -123123)
+                        {
+                            var toEdit = (Member)gridView.GetRow(editedRowHandle);
+                            DbManager.Instance.UpdateOneAsync(Builders<Member>.Filter.Eq(m => m.Id, toEdit.Id), toEdit);
+                        }
                     }
-                }
-            };
+                };
 
+                //this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { })
             
-        }
+            }
+        #endregion
 
 
-#region Control_events
+        #region Control_events
 
-        void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            gridControl.ShowRibbonPrintPreview();
-        }
+            void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
+            {
+                gridControl.ShowRibbonPrintPreview();
+            }
 
-        private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var selected = this.gridView.GetSelectedRows();
-            Member toDelete = (Member) gridView.GetRow(selected[0]);
+            private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
+            {
+                var selected = this.gridView.GetSelectedRows();
+                Member toDelete = (Member) gridView.GetRow(selected[0]);
 
-            var result = DbManager.Instance.DeleteOneAsync(Builders<Member>.Filter.Where(u => u.Id.Equals(toDelete.Id)));
+                var result = DbManager.Instance.DeleteOneAsync(Builders<Member>.Filter.Where(u => u.Id.Equals(toDelete.Id)));
 
-            Refresh_Datasource();
-        }
+                Refresh_Datasource();
+            }
 
-        private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Refresh_Datasource();
-        }
+            private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
+            {
+                BackgroundWorker bw = new BackgroundWorker();
+                bw.DoWork += Bw_DoWork;
+                bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
+            }
 
-        private void gridView_DoubleClick(object sender, EventArgs e)
-        {
-            GridView view = (GridView)sender;
-            Point pt = view.GridControl.PointToClient(Control.MousePosition);
-            DoRowClick(view, pt);
-        }
+            private void gridView_DoubleClick(object sender, EventArgs e)
+            {
+                GridView view = (GridView)sender;
+                Point pt = view.GridControl.PointToClient(Control.MousePosition);
+                DoRowClick(view, pt);
+            }
 
         #endregion
 
@@ -96,6 +101,7 @@ namespace DxCrm.UserControls
 
         private void Refresh_Datasource()
         {
+            gridControl.DataSource = dataSource = null;
             try
             {
                 dataSource = new BindingList<Member>(DbManager.Instance.FindAsync(FilterDefinition<Member>.Empty));

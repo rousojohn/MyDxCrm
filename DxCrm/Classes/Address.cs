@@ -14,7 +14,7 @@ namespace DxCrm.Classes
         public string Street { get; set; }
 
         [Display(Name = "Number", AutoGenerateField = true)]
-public string StreetNo { get; set; }
+        public string StreetNo { get; set; }
 
         [Display(Name = "Region", AutoGenerateField = true)]
 

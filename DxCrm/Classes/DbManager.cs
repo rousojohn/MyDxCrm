@@ -20,7 +20,8 @@ namespace DxCrm.Classes
             {typeof(MemberType), "memberTypes" },
             {typeof(IncomeType), "incomeTypes" },
             {typeof(OutcomeType), "outcomeTypes" },
-            {typeof(Supplier), "suppliers" }
+            {typeof(Supplier), "suppliers" },
+            {typeof(AccIncome), "incomes" }
         };
 
         private DbManager()
@@ -54,7 +55,31 @@ namespace DxCrm.Classes
         public List<T> FindAsync<T> (FilterDefinition<T> filter)
         {
             var collection = crmDb.GetCollection<T>(mapObjectType2MongoDocs[typeof(T)]);
-            return collection.Find(filter).ToListAsync().Result.ToList();
+            return PatchItemsInList(collection.Find(filter).ToListAsync().Result.ToList());
+        }
+
+        private List<T> PatchItemsInList<T> (List<T> _list)
+        {
+            if (typeof(T) != typeof(AccIncome) &&
+                typeof(T) != typeof(Member)
+                )
+                return _list;
+
+            foreach(T i in _list)
+            {
+                if (typeof(T) == typeof(AccIncome))
+                {
+                    (i as AccIncome).TypeDescr = FindSync(Builders<IncomeType>.Filter.Where(t => t.Id == new ObjectId(((i as AccIncome)).Type))).FirstOrDefault().Description;
+                    var member = FindSync(Builders<Member>.Filter.Where(t => t.Id == new ObjectId((i as AccIncome).Member) )).FirstOrDefault();
+                    (i as AccIncome).MemberName = string.Format("{0} {1}", member.Surname, member.Name);
+                }
+                else if (typeof(T) == typeof(Member))
+                {
+                    (i as Member).MemberName = string.Format("{0} {1}", (i as Member).Surname, (i as Member).Name);
+                }
+            }
+
+            return _list;
         }
 
 

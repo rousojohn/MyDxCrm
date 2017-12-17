@@ -22,21 +22,41 @@ namespace DxCrm.UserControls
 {
     public partial class SupplierUserControl : EditFormUserControl
     {
-        public SupplierUserControl()
-        {
-            InitializeComponent();
-        }
 
-        public SupplierUserControl(Supplier m)
-        {
-            InitializeComponent();
-        }
+        #region Constructors
 
-        public void SetModel(List<Supplier> m)
-        {
-            dataLayoutControl1.DataSource = m;
-        }
+            public SupplierUserControl()
+            {
+                InitializeComponent();
+            }
 
-             
+            public SupplierUserControl(Supplier m)
+            {
+                InitializeComponent();
+            }
+
+            public void SetModel(List<Supplier> m)
+            {
+                dataLayoutControl1.DataSource = m;
+            }
+        #endregion
+
+
+        #region Control_Events
+            private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+            {
+                UpdateSupplierVersion();
+            }
+
+            private void UpdateSupplierVersion()
+            {
+                txtVersionEdit.EditValue = (int)txtVersionEdit.EditValue + 1;
+            }
+
+            private void gridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+            {
+                UpdateSupplierVersion();
+            }
+        #endregion
     }
 }

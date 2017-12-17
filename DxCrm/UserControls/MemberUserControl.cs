@@ -23,26 +23,48 @@ namespace DxCrm.UserControls
     public partial class MemberUserControl : EditFormUserControl
     {
 
-        public MemberUserControl()
-        {
-            InitializeComponent();
-            var list =  new BindingList<MemberType>(DbManager.Instance.FindAsync(FilterDefinition<MemberType>.Empty));
-            this.txtTypeEdit.Properties.DataSource = list;
-            this.txtTypeEdit.Properties.DropDownRows = list.Count;
-            this.txtTypeEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
-            this.txtTypeEdit.Properties.AutoSearchColumnIndex = 1;
-        }
+        #region Constructors
+
+            public MemberUserControl()
+            {
+                InitializeComponent();
+                var list =  new BindingList<MemberType>(DbManager.Instance.FindAsync(FilterDefinition<MemberType>.Empty));
+                this.txtTypeEdit.Properties.DataSource = list;
+                this.txtTypeEdit.Properties.DropDownRows = list.Count;
+                this.txtTypeEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
+                this.txtTypeEdit.Properties.AutoSearchColumnIndex = 1;
+            }
 
        
 
-        public MemberUserControl(Member m)
-        {
-            InitializeComponent();
-        }
+            public MemberUserControl(Member m)
+            {
+                InitializeComponent();
+            }
+
+        #endregion
 
         public void SetModel(List<Member> m)
         {
             dataLayoutControl1.DataSource = m;
-        }      
+        }
+
+        #region Control_Events
+            private void gridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+            {
+                UpdateMemberVersion();
+            }
+
+            private void UpdateMemberVersion()
+            {
+                textEdit1.EditValue = (int)textEdit1.EditValue + 1;
+            }
+
+            private void gridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+            {
+                UpdateMemberVersion();
+            }
+        #endregion
+
     }
 }

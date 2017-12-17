@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.emailGrid = new DevExpress.XtraGrid.GridControl();
             this.emailGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -38,16 +39,20 @@
             this.txtSurnameEdit = new DevExpress.XtraEditors.TextEdit();
             this.txtNameEdit = new DevExpress.XtraEditors.TextEdit();
             this.txtNotesEdit = new DevExpress.XtraEditors.MemoEdit();
+            this.txtJobEdit = new DevExpress.XtraEditors.TextEdit();
+            this.txtVersionEdit = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.rsContact = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.txtJob = new DevExpress.XtraLayout.LayoutControlItem();
+            this.rsMore = new DevExpress.XtraLayout.LayoutControlGroup();
             this.txtNotes = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtSurname = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtVersion = new DevExpress.XtraLayout.LayoutControlItem();
             this.dataLayoutControl2 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -68,8 +73,6 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtJobEdit = new DevExpress.XtraEditors.TextEdit();
-            this.txtJob = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.emailGrid)).BeginInit();
@@ -81,16 +84,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSurnameEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotesEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJobEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVersionEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rsContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJob)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rsMore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSurname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl2)).BeginInit();
             this.dataLayoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -112,8 +119,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtJobEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtJob)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -127,6 +132,7 @@
             this.dataLayoutControl1.Controls.Add(this.txtNameEdit);
             this.dataLayoutControl1.Controls.Add(this.txtNotesEdit);
             this.dataLayoutControl1.Controls.Add(this.txtJobEdit);
+            this.dataLayoutControl1.Controls.Add(this.txtVersionEdit);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -139,10 +145,10 @@
             // 
             this.SetBoundFieldName(this.emailGrid, "Emails");
             this.SetBoundPropertyName(this.emailGrid, "DataSource");
-            this.emailGrid.Location = new System.Drawing.Point(402, 318);
+            this.emailGrid.Location = new System.Drawing.Point(402, 307);
             this.emailGrid.MainView = this.emailGridView;
             this.emailGrid.Name = "emailGrid";
-            this.emailGrid.Size = new System.Drawing.Size(374, 258);
+            this.emailGrid.Size = new System.Drawing.Size(374, 245);
             this.emailGrid.TabIndex = 12;
             this.emailGrid.UseEmbeddedNavigator = true;
             this.emailGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -157,10 +163,13 @@
             // 
             this.SetBoundFieldName(this.phoneGrid, "Phones");
             this.SetBoundPropertyName(this.phoneGrid, "DataSource");
-            this.phoneGrid.Location = new System.Drawing.Point(24, 318);
+            gridLevelNode1.RelationName = "Level1";
+            this.phoneGrid.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.phoneGrid.Location = new System.Drawing.Point(24, 307);
             this.phoneGrid.MainView = this.phoneGridView;
             this.phoneGrid.Name = "phoneGrid";
-            this.phoneGrid.Size = new System.Drawing.Size(374, 258);
+            this.phoneGrid.Size = new System.Drawing.Size(374, 245);
             this.phoneGrid.TabIndex = 11;
             this.phoneGrid.UseEmbeddedNavigator = true;
             this.phoneGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -178,7 +187,7 @@
             this.addressGrid.Location = new System.Drawing.Point(24, 94);
             this.addressGrid.MainView = this.addressGridView;
             this.addressGrid.Name = "addressGrid";
-            this.addressGrid.Size = new System.Drawing.Size(752, 220);
+            this.addressGrid.Size = new System.Drawing.Size(752, 209);
             this.addressGrid.TabIndex = 10;
             this.addressGrid.UseEmbeddedNavigator = true;
             this.addressGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -215,9 +224,29 @@
             this.SetBoundPropertyName(this.txtNotesEdit, "EditValue");
             this.txtNotesEdit.Location = new System.Drawing.Point(78, 70);
             this.txtNotesEdit.Name = "txtNotesEdit";
-            this.txtNotesEdit.Size = new System.Drawing.Size(698, 506);
+            this.txtNotesEdit.Size = new System.Drawing.Size(698, 482);
             this.txtNotesEdit.StyleController = this.dataLayoutControl1;
             this.txtNotesEdit.TabIndex = 21;
+            // 
+            // txtJobEdit
+            // 
+            this.SetBoundFieldName(this.txtJobEdit, "Job");
+            this.SetBoundPropertyName(this.txtJobEdit, "EditValue");
+            this.txtJobEdit.Location = new System.Drawing.Point(78, 70);
+            this.txtJobEdit.Name = "txtJobEdit";
+            this.txtJobEdit.Size = new System.Drawing.Size(698, 20);
+            this.txtJobEdit.StyleController = this.dataLayoutControl1;
+            this.txtJobEdit.TabIndex = 22;
+            // 
+            // txtVersionEdit
+            // 
+            this.SetBoundFieldName(this.txtVersionEdit, "Version");
+            this.SetBoundPropertyName(this.txtVersionEdit, "EditValue");
+            this.txtVersionEdit.Location = new System.Drawing.Point(66, 568);
+            this.txtVersionEdit.Name = "txtVersionEdit";
+            this.txtVersionEdit.Size = new System.Drawing.Size(722, 20);
+            this.txtVersionEdit.StyleController = this.dataLayoutControl1;
+            this.txtVersionEdit.TabIndex = 23;
             // 
             // layoutControlGroup1
             // 
@@ -226,7 +255,8 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.tabbedControlGroup1,
             this.txtSurname,
-            this.txtName});
+            this.txtName,
+            this.txtVersion});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(800, 600);
@@ -236,58 +266,68 @@
             // 
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 24);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
-            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup2;
+            this.tabbedControlGroup1.SelectedTabPage = this.rsContact;
             this.tabbedControlGroup1.SelectedTabPageIndex = 0;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(780, 556);
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(780, 532);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup2,
-            this.layoutControlGroup3});
+            this.rsContact,
+            this.rsMore});
             // 
-            // layoutControlGroup2
+            // rsContact
             // 
-            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.rsContact.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem7,
             this.layoutControlItem8,
             this.layoutControlItem9,
             this.txtJob});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(756, 510);
+            this.rsContact.Location = new System.Drawing.Point(0, 0);
+            this.rsContact.Name = "rsContact";
+            this.rsContact.Size = new System.Drawing.Size(756, 486);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.addressGrid;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(756, 224);
+            this.layoutControlItem7.Size = new System.Drawing.Size(756, 213);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.phoneGrid;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 248);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 237);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(378, 262);
+            this.layoutControlItem8.Size = new System.Drawing.Size(378, 249);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.emailGrid;
-            this.layoutControlItem9.Location = new System.Drawing.Point(378, 248);
+            this.layoutControlItem9.Location = new System.Drawing.Point(378, 237);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(378, 262);
+            this.layoutControlItem9.Size = new System.Drawing.Size(378, 249);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
-            // layoutControlGroup3
+            // txtJob
             // 
-            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.txtJob.Control = this.txtJobEdit;
+            this.txtJob.CustomizationFormText = "rsJob";
+            this.txtJob.Location = new System.Drawing.Point(0, 0);
+            this.txtJob.Name = "txtJob";
+            this.txtJob.Size = new System.Drawing.Size(756, 24);
+            this.txtJob.Text = "rsJob";
+            this.txtJob.TextSize = new System.Drawing.Size(51, 13);
+            // 
+            // rsMore
+            // 
+            this.rsMore.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.txtNotes});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(756, 510);
+            this.rsMore.Location = new System.Drawing.Point(0, 0);
+            this.rsMore.Name = "rsMore";
+            this.rsMore.Size = new System.Drawing.Size(756, 486);
             // 
             // txtNotes
             // 
@@ -295,7 +335,7 @@
             this.txtNotes.CustomizationFormText = "rsNotes";
             this.txtNotes.Location = new System.Drawing.Point(0, 0);
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(756, 510);
+            this.txtNotes.Size = new System.Drawing.Size(756, 486);
             this.txtNotes.Text = "rsNotes";
             this.txtNotes.TextSize = new System.Drawing.Size(51, 13);
             // 
@@ -317,6 +357,15 @@
             this.txtName.Size = new System.Drawing.Size(402, 24);
             this.txtName.Text = "rsName";
             this.txtName.TextSize = new System.Drawing.Size(51, 13);
+            // 
+            // txtVersion
+            // 
+            this.txtVersion.Control = this.txtVersionEdit;
+            this.txtVersion.Location = new System.Drawing.Point(0, 556);
+            this.txtVersion.Name = "txtVersion";
+            this.txtVersion.Size = new System.Drawing.Size(780, 24);
+            this.txtVersion.Text = "rsVersion";
+            this.txtVersion.TextSize = new System.Drawing.Size(51, 13);
             // 
             // dataLayoutControl2
             // 
@@ -393,27 +442,27 @@
             // textEdit1
             // 
             this.SetBoundPropertyName(this.textEdit1, "");
-            this.textEdit1.Location = new System.Drawing.Point(67, 12);
+            this.textEdit1.Location = new System.Drawing.Point(66, 12);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(331, 20);
+            this.textEdit1.Size = new System.Drawing.Size(332, 20);
             this.textEdit1.StyleController = this.dataLayoutControl2;
             this.textEdit1.TabIndex = 4;
             // 
             // textEdit2
             // 
             this.SetBoundPropertyName(this.textEdit2, "");
-            this.textEdit2.Location = new System.Drawing.Point(457, 12);
+            this.textEdit2.Location = new System.Drawing.Point(456, 12);
             this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(331, 20);
+            this.textEdit2.Size = new System.Drawing.Size(332, 20);
             this.textEdit2.StyleController = this.dataLayoutControl2;
             this.textEdit2.TabIndex = 5;
             // 
             // memoEdit1
             // 
             this.SetBoundPropertyName(this.memoEdit1, "");
-            this.memoEdit1.Location = new System.Drawing.Point(79, 70);
+            this.memoEdit1.Location = new System.Drawing.Point(78, 70);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(697, 506);
+            this.memoEdit1.Size = new System.Drawing.Size(698, 506);
             this.memoEdit1.StyleController = this.dataLayoutControl2;
             this.memoEdit1.TabIndex = 21;
             // 
@@ -515,26 +564,6 @@
             this.layoutControlItem10.Text = "rsName";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(51, 13);
             // 
-            // txtJobEdit
-            // 
-            this.SetBoundFieldName(this.txtJobEdit, "Job");
-            this.SetBoundPropertyName(this.txtJobEdit, "EditValue");
-            this.txtJobEdit.Location = new System.Drawing.Point(78, 70);
-            this.txtJobEdit.Name = "txtJobEdit";
-            this.txtJobEdit.Size = new System.Drawing.Size(698, 20);
-            this.txtJobEdit.StyleController = this.dataLayoutControl1;
-            this.txtJobEdit.TabIndex = 22;
-            // 
-            // txtJob
-            // 
-            this.txtJob.Control = this.txtJobEdit;
-            this.txtJob.CustomizationFormText = "rsJob";
-            this.txtJob.Location = new System.Drawing.Point(0, 0);
-            this.txtJob.Name = "txtJob";
-            this.txtJob.Size = new System.Drawing.Size(756, 24);
-            this.txtJob.Text = "rsJob";
-            this.txtJob.TextSize = new System.Drawing.Size(51, 13);
-            // 
             // SupplierUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -554,16 +583,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSurnameEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotesEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJobEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVersionEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rsContact)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJob)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rsMore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSurname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVersion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl2)).EndInit();
             this.dataLayoutControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -585,8 +618,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtJobEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtJob)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -598,8 +629,8 @@
         private DevExpress.XtraEditors.TextEdit txtSurnameEdit;
         private DevExpress.XtraEditors.TextEdit txtNameEdit;
         private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.XtraLayout.LayoutControlGroup rsMore;
+        private DevExpress.XtraLayout.LayoutControlGroup rsContact;
         private DevExpress.XtraLayout.LayoutControlItem txtSurname;
         private DevExpress.XtraLayout.LayoutControlItem txtName;
         private DevExpress.XtraGrid.GridControl emailGrid;
@@ -635,5 +666,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
+        private DevExpress.XtraEditors.TextEdit txtVersionEdit;
+        private DevExpress.XtraLayout.LayoutControlItem txtVersion;
     }
 }
