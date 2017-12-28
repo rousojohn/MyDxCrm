@@ -41,7 +41,8 @@ namespace DxCrm
             {PageTitle.Params_MemberType, (object o) => {return new MemberTypeLstUserControl(); } },
             {PageTitle.Params_IncomeType, (object o) => {return new IncomeTypeLstUserControl(); } },
             {PageTitle.Params_OutcomeType, (object o) => {return new OutcomeTypeLstUserControl(); } },
-            {PageTitle.Incomes_List, (object o) => {return new AccIncomeLstUserControl(); } }
+            {PageTitle.Incomes_List, (object o) => {return new AccIncomeLstUserControl(); } },
+            {PageTitle.Outcomes_List, (object o) => {return new AccOutcomeLstUserControl(); } }
         };
 
 

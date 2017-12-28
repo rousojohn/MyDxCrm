@@ -21,7 +21,8 @@ namespace DxCrm.Classes
             {typeof(IncomeType), "incomeTypes" },
             {typeof(OutcomeType), "outcomeTypes" },
             {typeof(Supplier), "suppliers" },
-            {typeof(AccIncome), "incomes" }
+            {typeof(AccIncome), "incomes" },
+            {typeof(AccOutcome), "outcomes" }
         };
 
         private DbManager()
@@ -60,7 +61,8 @@ namespace DxCrm.Classes
 
         private List<T> PatchItemsInList<T> (List<T> _list)
         {
-            if (typeof(T) != typeof(AccIncome) &&
+            if (typeof(T) != typeof(AccOutcome) && 
+                typeof(T) != typeof(AccIncome) &&
                 typeof(T) != typeof(Member)
                 )
                 return _list;
@@ -70,8 +72,14 @@ namespace DxCrm.Classes
                 if (typeof(T) == typeof(AccIncome))
                 {
                     (i as AccIncome).TypeDescr = FindSync(Builders<IncomeType>.Filter.Where(t => t.Id == new ObjectId(((i as AccIncome)).Type))).FirstOrDefault().Description;
-                    var member = FindSync(Builders<Member>.Filter.Where(t => t.Id == new ObjectId((i as AccIncome).Member) )).FirstOrDefault();
+                    var member = FindSync(Builders<Member>.Filter.Where(t => t.Id == new ObjectId((i as AccIncome).Member))).FirstOrDefault();
                     (i as AccIncome).MemberName = string.Format("{0} {1}", member.Surname, member.Name);
+                }
+                else  if (typeof(T) == typeof(AccOutcome))
+                {
+                    (i as AccOutcome).TypeDescr = FindSync(Builders<OutcomeType>.Filter.Where(t => t.Id == new ObjectId(((i as AccOutcome)).Type))).FirstOrDefault().Description;
+                    var supplier = FindSync(Builders<Supplier>.Filter.Where(t => t.Id == new ObjectId((i as AccOutcome).Supplier))).FirstOrDefault();
+                    (i as AccOutcome).SupplierName = string.Format("{0} {1}", supplier.Surname, supplier.Name);
                 }
                 else if (typeof(T) == typeof(Member))
                 {

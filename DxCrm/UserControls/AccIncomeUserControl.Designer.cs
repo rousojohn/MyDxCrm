@@ -143,9 +143,9 @@
             // 
             this.SetBoundFieldName(this.txtNotesEdit, "Notes");
             this.SetBoundPropertyName(this.txtNotesEdit, "EditValue");
-            this.txtNotesEdit.Location = new System.Drawing.Point(62, 84);
+            this.txtNotesEdit.Location = new System.Drawing.Point(62, 82);
             this.txtNotesEdit.Name = "txtNotesEdit";
-            this.txtNotesEdit.Size = new System.Drawing.Size(726, 504);
+            this.txtNotesEdit.Size = new System.Drawing.Size(726, 506);
             this.txtNotesEdit.StyleController = this.dataLayoutControl1;
             this.txtNotesEdit.TabIndex = 9;
             // 
@@ -171,7 +171,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 48);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(780, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(780, 22);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // txtDate
@@ -213,9 +213,9 @@
             // txtNotes
             // 
             this.txtNotes.Control = this.txtNotesEdit;
-            this.txtNotes.Location = new System.Drawing.Point(0, 72);
+            this.txtNotes.Location = new System.Drawing.Point(0, 70);
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(780, 508);
+            this.txtNotes.Size = new System.Drawing.Size(780, 510);
             this.txtNotes.Text = "rsNotes";
             this.txtNotes.TextSize = new System.Drawing.Size(47, 13);
             // 

@@ -2,11 +2,13 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace DxCrm.Classes
 {
     public class AccIncome
     {
+        [Key]
         public ObjectId Id { get; set; }
 
         public string Member { get; set; }

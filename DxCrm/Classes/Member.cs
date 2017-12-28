@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace DxCrm.Classes
 {
@@ -20,6 +21,7 @@ namespace DxCrm.Classes
         [BsonIgnore]
         public int Version { get; set; }
 
+        [Key]
         public ObjectId Id { get; set; }
 
         public string Name { get; set; }

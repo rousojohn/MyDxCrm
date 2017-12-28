@@ -21,11 +21,16 @@ namespace DxCrm.UserControls
 {
     public partial class AccIncomeUserControl : EditFormUserControl
     {
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            this.txtTypeEdit.EditValue = txtTypeEdit.Properties.GetKeyValueByDisplayValue((this.dataLayoutControl1.DataSource as AccIncome).TypeDescr);
-            this.txtMemberEdit.EditValue = txtMemberEdit.Properties.GetKeyValueByDisplayValue((this.dataLayoutControl1.DataSource as AccIncome).MemberName);
+
+            
+            //if (this.dataLayoutControl1.DataSource != null)
+            //    this.txtTypeEdit.EditValue = txtTypeEdit.Properties.GetKeyValueByDisplayValue((this.dataLayoutControl1.DataSource as AccIncome).Type);
+            //this.txtTypeEdit.EditValue = txtTypeEdit.Properties.GetKeyValueByDisplayValue((this.dataLayoutControl1.DataSource as AccIncome).);
+            //this.txtMemberEdit.EditValue = txtMemberEdit.Properties.GetKeyValueByDisplayValue((this.dataLayoutControl1.DataSource as AccIncome).MemberName);
         }
 
         public AccIncomeUserControl()
@@ -37,44 +42,64 @@ namespace DxCrm.UserControls
             this.txtTypeEdit.Properties.DataSource = list;
             this.txtTypeEdit.Properties.DropDownRows = list.Count;
             this.txtTypeEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
-            this.txtTypeEdit.Properties.DisplayMember = "Description";
+            //this.txtTypeEdit.Properties.DisplayMember = "Description";
             this.txtTypeEdit.Properties.ValueMember = "Id";
             this.txtTypeEdit.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
+            this.txtTypeEdit.CustomDisplayText += TxtTypeEdit_CustomDisplayText;
 
             var memberlist = new BindingList<Member>(DbManager.Instance.FindAsync(FilterDefinition<Member>.Empty));
             this.txtMemberEdit.Properties.DataSource = memberlist;
             this.txtMemberEdit.Properties.DropDownRows = memberlist.Count;
             this.txtMemberEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
-            this.txtMemberEdit.Properties.DisplayMember = "MemberName";
+            //this.txtMemberEdit.Properties.DisplayMember = "MemberName";
             this.txtMemberEdit.Properties.ValueMember = "Id";
+            this.txtMemberEdit.CustomDisplayText += txtMemberEdit_CustomDisplayText;
 
             this.txtMemberEdit.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AM"));
             this.txtMemberEdit.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Surname"));
             this.txtMemberEdit.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name"));
 
         }
-        
+
+        private void TxtTypeEdit_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+        {
+            RepositoryItemLookUpEdit props;
+            if (sender is LookUpEdit)
+                props = (sender as LookUpEdit).Properties;
+            else
+                props = sender as RepositoryItemLookUpEdit;
+            if (props != null && e.Value != null && !String.IsNullOrWhiteSpace(e.Value.ToString()))
+            {
+                IncomeType row = (props.DataSource as BindingList<IncomeType>).Where(m => m.Id == new MongoDB.Bson.ObjectId(e.Value.ToString())).SingleOrDefault();
+                if (row != null)
+                {
+                    e.DisplayText = String.Format("{0}", row.Description);
+                }
+            }
+
+        }
+
         public void SetDatasource (object _datasource)
         {
             this.dataLayoutControl1.DataSource = _datasource;
         }
 
-        //private void txtMemberEdit_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
-        //{
-        //    RepositoryItemLookUpEdit props;
-        //    if (sender is LookUpEdit)
-        //        props = (sender as LookUpEdit).Properties;
-        //    else
-        //        props = sender as RepositoryItemLookUpEdit;
-        //    if (props != null && e.Value != null)
-        //    {
-        //        Member row = props.GetDataSourceRowByDisplayValue(e.Value) as Member;
-        //        if (row != null)
-        //        {
-        //            e.DisplayText = String.Format("{0} {1}", row.Surname, row.Name);
-        //        }
-        //    }
-
-        //}
+        private void txtMemberEdit_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+        {
+            RepositoryItemLookUpEdit props;
+            if (sender is LookUpEdit)
+                props = (sender as LookUpEdit).Properties;
+            else
+                props = sender as RepositoryItemLookUpEdit;
+            if (props != null && e.Value != null && !String.IsNullOrWhiteSpace(e.Value.ToString()))
+            {
+                Member row = (props.DataSource as BindingList<Member>).Where(m => m.Id == new MongoDB.Bson.ObjectId(e.Value.ToString())).SingleOrDefault();
+                //Member row = props.GetDataSourceRowByDisplayValue(e.Value) as Member;
+                if (row != null)
+                {
+                    e.DisplayText = String.Format("{0} {1}", row.Surname, row.Name);
+                }
+            }
+        }
     }
 }

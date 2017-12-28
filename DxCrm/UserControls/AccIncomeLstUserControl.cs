@@ -14,6 +14,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DxCrm.Classes;
 using MongoDB.Driver;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace DxCrm.UserControls
 {
@@ -23,6 +24,8 @@ namespace DxCrm.UserControls
         int editedRowHandle = -123123;
         private AccIncomeUserControl AccIncomeEditForm = new AccIncomeUserControl();
         BackgroundWorker bw = new BackgroundWorker();
+
+       
 
         public AccIncomeLstUserControl()
         {
@@ -40,7 +43,7 @@ namespace DxCrm.UserControls
                     bw.RunWorkerAsync();
             };
 
-            this.gridView.RowUpdated += (sender, e) =>
+            this.gridView.RowUpdated += (sender, ex) =>
             {
                 var newAccIncome = (gridView.DataSource as BindingList<AccIncome>).Where(m => m.Id == new MongoDB.Bson.ObjectId()).ToList();
                 if (newAccIncome.Count > 0)
@@ -56,19 +59,49 @@ namespace DxCrm.UserControls
             };
 
             this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "AA", FieldName = "AA", Caption = "AA", Visible = true });
-            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Type", FieldName = "TypeDescr", Caption = "Type", Visible = true });
+            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn()
+            {
+                Name = "Type",
+                FieldName = "Type",
+                Caption = "Type",
+                Visible = true
+            });
+
             this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Date", FieldName = "Date", Caption = "Date", Visible = true });
-            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Member", FieldName = "MemberName", Caption = "Member", Visible = true });
+            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn()
+            {
+                Name = "Member",
+                FieldName = "Member",
+                Caption = "Member",
+                Visible = true
+            });
             this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Amount", FieldName = "Amount", Caption = "Amount", Visible = true });
+            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Notes", FieldName = "Notes", Caption = "Notes", Visible = false });
 
+            this.gridView.CustomColumnDisplayText += GridView_CustomColumnDisplayText;
+        }
 
-
+        private void GridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            ColumnView view = sender as ColumnView;
+            if (e.ListSourceRowIndex != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+            {
+                if (e.Column.FieldName == "Member")
+                {
+                    if (view.GetListSourceRowCellValue(e.ListSourceRowIndex, "MemberName") != null)
+                        e.DisplayText = view.GetListSourceRowCellValue(e.ListSourceRowIndex, "MemberName").ToString();
+                }
+                else if (e.Column.FieldName == "Type")
+                {
+                    if (view.GetListSourceRowCellValue(e.ListSourceRowIndex, "TypeDescr") != null)
+                        e.DisplayText = view.GetListSourceRowCellValue(e.ListSourceRowIndex, "TypeDescr").ToString();
+                }
+            }
         }
 
         private void gridView_ShowingPopupEditForm(object sender, ShowingPopupEditFormEventArgs e)
         {
             e.EditForm.StartPosition = FormStartPosition.CenterScreen;
-            AccIncomeEditForm.SetDatasource(this.gridView.GetRow(e.RowHandle) as AccIncome);
         }
 
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
@@ -128,7 +161,7 @@ namespace DxCrm.UserControls
             {
                 gridControl.DataSource = dataSource;
                 gridView.OptionsBehavior.EditingMode = GridEditingMode.EditForm;
-                gridView.OptionsEditForm.CustomEditFormLayout = AccIncomeEditForm;
+                gridView.OptionsEditForm.CustomEditFormLayout = AccIncomeEditForm ;
                 gridControl.RefreshDataSource();
             }
         }
