@@ -29,7 +29,8 @@ namespace DxCrm
             Acc_Summary = 22,
             Params_MemberType = 30,
             Params_IncomeType = 31,
-            Params_OutcomeType = 32
+            Params_OutcomeType = 32,
+            Params_Variables = 33
         }
 
         private Dictionary<PageTitle, Func<object, UserControl>> mapPagesToUserControls = new Dictionary<PageTitle, Func<object, UserControl>> {
@@ -41,6 +42,7 @@ namespace DxCrm
             {PageTitle.Params_MemberType, (object o) => {return new MemberTypeLstUserControl(); } },
             {PageTitle.Params_IncomeType, (object o) => {return new IncomeTypeLstUserControl(); } },
             {PageTitle.Params_OutcomeType, (object o) => {return new OutcomeTypeLstUserControl(); } },
+            {PageTitle.Params_Variables, (object o) => {return new VariablesUserControl(); } },
             {PageTitle.Incomes_List, (object o) => {return new AccIncomeLstUserControl(); } },
             {PageTitle.Outcomes_List, (object o) => {return new AccOutcomeLstUserControl(); } }
         };

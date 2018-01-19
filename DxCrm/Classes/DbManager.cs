@@ -22,7 +22,8 @@ namespace DxCrm.Classes
             {typeof(OutcomeType), "outcomeTypes" },
             {typeof(Supplier), "suppliers" },
             {typeof(AccIncome), "incomes" },
-            {typeof(AccOutcome), "outcomes" }
+            {typeof(AccOutcome), "outcomes" },
+            {typeof(Variables), "variables" }
         };
 
         private DbManager()

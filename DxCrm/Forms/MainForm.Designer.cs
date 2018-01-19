@@ -42,16 +42,16 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.officeNavigationBar = new DevExpress.XtraBars.Navigation.OfficeNavigationBar();
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
-            this.financeNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.employeesNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.memberLstNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             this.newMemberNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             this.customersNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.suppliersLstNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             this.suppliersNewNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
+            this.financeNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.memberTypenavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             this.incomeTypeNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
@@ -63,6 +63,7 @@
             this.customersLabelControl = new DevExpress.XtraEditors.LabelControl();
             this.financeNavigationPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.paramsNavigationPage = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.variablesNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar)).BeginInit();
@@ -197,7 +198,8 @@
             this.outcomeTypeNavBarItm,
             this.navBarItem1,
             this.navBarItem2,
-            this.navBarItem3});
+            this.navBarItem3,
+            this.variablesNavBarItm});
             this.navBarControl.Location = new System.Drawing.Point(0, 143);
             this.navBarControl.Name = "navBarControl";
             this.navBarControl.OptionsLayout.StoreAppearance = true;
@@ -207,33 +209,6 @@
             this.navBarControl.TabIndex = 0;
             this.navBarControl.Text = "navBarControl";
             this.navBarControl.ActiveGroupChanged += new DevExpress.XtraNavBar.NavBarGroupEventHandler(this.navBarControl_ActiveGroupChanged);
-            // 
-            // financeNavBarGroup
-            // 
-            this.financeNavBarGroup.Caption = "rsFinance";
-            this.financeNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3)});
-            this.financeNavBarGroup.Name = "financeNavBarGroup";
-            // 
-            // navBarItem1
-            // 
-            this.navBarItem1.Caption = "rsIncome";
-            this.navBarItem1.Name = "navBarItem1";
-            this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
-            // 
-            // navBarItem2
-            // 
-            this.navBarItem2.Caption = "rsOutcome";
-            this.navBarItem2.Name = "navBarItem2";
-            this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
-            // 
-            // navBarItem3
-            // 
-            this.navBarItem3.Caption = "rsSummary";
-            this.navBarItem3.Name = "navBarItem3";
-            this.navBarItem3.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
             // 
             // employeesNavBarGroup
             // 
@@ -276,13 +251,41 @@
             this.suppliersNewNavBarItm.Name = "suppliersNewNavBarItm";
             this.suppliersNewNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
             // 
+            // financeNavBarGroup
+            // 
+            this.financeNavBarGroup.Caption = "rsFinance";
+            this.financeNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3)});
+            this.financeNavBarGroup.Name = "financeNavBarGroup";
+            // 
+            // navBarItem1
+            // 
+            this.navBarItem1.Caption = "rsIncome";
+            this.navBarItem1.Name = "navBarItem1";
+            this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
+            // 
+            // navBarItem2
+            // 
+            this.navBarItem2.Caption = "rsOutcome";
+            this.navBarItem2.Name = "navBarItem2";
+            this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
+            // 
+            // navBarItem3
+            // 
+            this.navBarItem3.Caption = "rsSummary";
+            this.navBarItem3.Name = "navBarItem3";
+            this.navBarItem3.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
+            // 
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "rsParameters";
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.memberTypenavBarItm),
             new DevExpress.XtraNavBar.NavBarItemLink(this.incomeTypeNavBarItm),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.outcomeTypeNavBarItm)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.outcomeTypeNavBarItm),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.variablesNavBarItm)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
             // memberTypenavBarItm
@@ -381,6 +384,12 @@
             this.paramsNavigationPage.Name = "paramsNavigationPage";
             this.paramsNavigationPage.Size = new System.Drawing.Size(625, 380);
             // 
+            // variablesNavBarItm
+            // 
+            this.variablesNavBarItm.Caption = "rsVariables";
+            this.variablesNavBarItm.Name = "variablesNavBarItm";
+            this.variablesNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,5 +454,6 @@
         private DevExpress.XtraNavBar.NavBarItem navBarItem1;
         private DevExpress.XtraNavBar.NavBarItem navBarItem2;
         private DevExpress.XtraNavBar.NavBarItem navBarItem3;
+        private DevExpress.XtraNavBar.NavBarItem variablesNavBarItm;
     }
 }

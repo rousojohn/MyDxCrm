@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AccIncome.cs" />
+    <Compile Include="Classes\AccOutcome.cs" />
     <Compile Include="Classes\Address.cs" />
     <Compile Include="Classes\ApplicationSettings.cs" />
     <Compile Include="Classes\DbManager.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Classes\OutcomeType.cs" />
     <Compile Include="Classes\Supplier.cs" />
     <Compile Include="Classes\Telephone.cs" />
+    <Compile Include="Classes\Variables.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +103,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\AccOutcomeUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AccOutcomeUserControl.Designer.cs">
+      <DependentUpon>AccOutcomeUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MemberLstUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,6 +163,18 @@
     <Compile Include="UserControls\AccIncomeUserControl.Designer.cs">
       <DependentUpon>AccIncomeUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AccOutcomeLstUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AccOutcomeLstUserControl.Designer.cs">
+      <DependentUpon>AccOutcomeLstUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VariablesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\VariablesUserControl.Designer.cs">
+      <DependentUpon>VariablesUserControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,8 +194,14 @@
     <EmbeddedResource Include="UserControls\AccIncomeLstUserControl.resx">
       <DependentUpon>AccIncomeLstUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AccOutcomeUserControl.resx">
+      <DependentUpon>AccOutcomeUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AccIncomeUserControl.resx">
       <DependentUpon>AccIncomeUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AccOutcomeLstUserControl.resx">
+      <DependentUpon>AccOutcomeLstUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\IncomeTypeLstUserControl.resx">
       <DependentUpon>IncomeTypeLstUserControl.cs</DependentUpon>
@@ -197,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SupplierUserControl.resx">
       <DependentUpon>SupplierUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\VariablesUserControl.resx">
+      <DependentUpon>VariablesUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="NLog.xsd">
