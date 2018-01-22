@@ -44,7 +44,8 @@ namespace DxCrm
             {PageTitle.Params_OutcomeType, (object o) => {return new OutcomeTypeLstUserControl(); } },
             {PageTitle.Params_Variables, (object o) => {return new VariablesUserControl(); } },
             {PageTitle.Incomes_List, (object o) => {return new AccIncomeLstUserControl(); } },
-            {PageTitle.Outcomes_List, (object o) => {return new AccOutcomeLstUserControl(); } }
+            {PageTitle.Outcomes_List, (object o) => {return new AccOutcomeLstUserControl(); } },
+            {PageTitle.Acc_Summary, (object o) => {return new AccSummaryUserControl(); } }
         };
 
 

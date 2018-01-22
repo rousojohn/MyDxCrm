@@ -28,12 +28,6 @@ namespace DxCrm
         {
             appSettings.Read();
 
-            //crmDb = new MongoClient(new MongoClientSettings
-            //{
-            //    Server = new MongoServerAddress(appSettings.Host, appSettings.Port),
-            //    UseSsl = false
-            //}).GetDatabase(appSettings.Database);
-
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -46,8 +40,14 @@ namespace DxCrm
 
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = AppSettings.Theme;
 
-            Application.Run(Program.mainForm);
-            //Application.Run(new MainForm());
+            try
+            {
+                Application.Run(Program.mainForm);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Error(ex, ex.Message);
+            }
         }
     }
 }

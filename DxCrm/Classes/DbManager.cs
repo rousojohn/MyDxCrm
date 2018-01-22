@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson.Serialization;
 
 namespace DxCrm.Classes
 {
@@ -60,7 +62,7 @@ namespace DxCrm.Classes
             return PatchItemsInList(collection.Find(filter).ToListAsync().Result.ToList());
         }
 
-        private List<T> PatchItemsInList<T> (List<T> _list)
+        private List<T> PatchItemsInList<T> (List<T> _list, bool Is4accSumary = false)
         {
             if (typeof(T) != typeof(AccOutcome) && 
                 typeof(T) != typeof(AccIncome) &&
@@ -70,21 +72,39 @@ namespace DxCrm.Classes
 
             foreach(T i in _list)
             {
-                if (typeof(T) == typeof(AccIncome))
-                {
-                    (i as AccIncome).TypeDescr = FindSync(Builders<IncomeType>.Filter.Where(t => t.Id == new ObjectId(((i as AccIncome)).Type))).FirstOrDefault().Description;
-                    var member = FindSync(Builders<Member>.Filter.Where(t => t.Id == new ObjectId((i as AccIncome).Member))).FirstOrDefault();
-                    (i as AccIncome).MemberName = string.Format("{0} {1}", member.Surname, member.Name);
+                if (Is4accSumary) { 
+                
+                    if (typeof(T) == typeof(AccIncome))
+                    {
+                        (i as AccIncome).TypeDescr = FindSync(Builders<IncomeType>.Filter.Where(t => t.Id ==((i as AccIncome)).Id)).FirstOrDefault().Description;
+                        //var member = FindSync(Builders<Member>.Filter.Where(t => t.Id == new ObjectId((i as AccIncome).Member))).FirstOrDefault();
+                        //(i as AccIncome).MemberName = string.Format("{0} {1}", member.Surname, member.Name);
+                    }
+                    else if (typeof(T) == typeof(AccOutcome))
+                    {
+                        (i as AccOutcome).TypeDescr = FindSync(Builders<OutcomeType>.Filter.Where(t => t.Id == ((i as AccOutcome)).Id)).FirstOrDefault().Description;
+                        //var supplier = FindSync(Builders<Supplier>.Filter.Where(t => t.Id == new ObjectId((i as AccOutcome).Supplier))).FirstOrDefault();
+                        //(i as AccOutcome).SupplierName = string.Format("{0} {1}", supplier.Surname, supplier.Name);
+                    }
                 }
-                else  if (typeof(T) == typeof(AccOutcome))
+                else
                 {
-                    (i as AccOutcome).TypeDescr = FindSync(Builders<OutcomeType>.Filter.Where(t => t.Id == new ObjectId(((i as AccOutcome)).Type))).FirstOrDefault().Description;
-                    var supplier = FindSync(Builders<Supplier>.Filter.Where(t => t.Id == new ObjectId((i as AccOutcome).Supplier))).FirstOrDefault();
-                    (i as AccOutcome).SupplierName = string.Format("{0} {1}", supplier.Surname, supplier.Name);
-                }
-                else if (typeof(T) == typeof(Member))
-                {
-                    (i as Member).MemberName = string.Format("{0} {1}", (i as Member).Surname, (i as Member).Name);
+                    if (typeof(T) == typeof(AccIncome))
+                    {
+                        (i as AccIncome).TypeDescr = FindSync(Builders<IncomeType>.Filter.Where(t => t.Id == new ObjectId(((i as AccIncome)).Type))).FirstOrDefault().Description;
+                        var member = FindSync(Builders<Member>.Filter.Where(t => t.Id == new ObjectId((i as AccIncome).Member))).FirstOrDefault();
+                        (i as AccIncome).MemberName = string.Format("{0} {1}", member.Surname, member.Name);
+                    }
+                    else if (typeof(T) == typeof(AccOutcome))
+                    {
+                        (i as AccOutcome).TypeDescr = FindSync(Builders<OutcomeType>.Filter.Where(t => t.Id == new ObjectId(((i as AccOutcome)).Type))).FirstOrDefault().Description;
+                        var supplier = FindSync(Builders<Supplier>.Filter.Where(t => t.Id == new ObjectId((i as AccOutcome).Supplier))).FirstOrDefault();
+                        (i as AccOutcome).SupplierName = string.Format("{0} {1}", supplier.Surname, supplier.Name);
+                    }
+                    else if (typeof(T) == typeof(Member))
+                    {
+                        (i as Member).MemberName = string.Format("{0} {1}", (i as Member).Surname, (i as Member).Name);
+                    }
                 }
             }
 
@@ -149,6 +169,41 @@ namespace DxCrm.Classes
                 }
                 return await collection.BulkWriteAsync(models, null, cnclToken.Token);
             }
+        }
+
+
+        
+        public List<T> GetIncomesByType<T> ()
+        {
+            if (typeof(T) != typeof(AccOutcome) && typeof(T) != typeof(AccIncome)) throw new Exception("Not AccIncome or Outcome");
+
+            var collection = crmDb.GetCollection<T> (mapObjectType2MongoDocs[typeof(T)]);
+            var match = new BsonDocument();
+
+            AggregateOptions p = new AggregateOptions();
+            p.AllowDiskUse = true;
+
+            var aggregate = collection.Aggregate(p)
+                                      .Group(new BsonDocument { { "_id", "$Type" }, { "Amount", new BsonDocument("$sum", "$Amount") } })
+                                      .ToListAsync()
+                                      .Result;
+            List<T> ret = new List<T>();
+            foreach (BsonDocument o in aggregate)
+            {
+                var myObj = BsonSerializer.Deserialize<T>(o);
+                
+                ret.Add(myObj);
+            }
+
+            ret = PatchItemsInList(ret, true);
+            return ret;
+        }
+
+        private T Cast<T>(T typeHolder, Object x)
+        {
+            // typeHolder above is just for compiler magic
+            // to infer the type to cast x to
+            return (T)x;
         }
     }
 }

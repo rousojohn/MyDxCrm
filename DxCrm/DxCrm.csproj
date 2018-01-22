@@ -175,6 +175,12 @@
     <Compile Include="UserControls\VariablesUserControl.Designer.cs">
       <DependentUpon>VariablesUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AccSummaryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AccSummaryUserControl.Designer.cs">
+      <DependentUpon>AccSummaryUserControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AccOutcomeLstUserControl.resx">
       <DependentUpon>AccOutcomeLstUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AccSummaryUserControl.resx">
+      <DependentUpon>AccSummaryUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\IncomeTypeLstUserControl.resx">
       <DependentUpon>IncomeTypeLstUserControl.cs</DependentUpon>
