@@ -77,20 +77,20 @@ namespace DxCrm.UserControls
             {
                 Name = "Type",
                 FieldName = "Type",
-                Caption = "Type",
+                Caption = "Τύπος",
                 Visible = true
             });
 
-            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Date", FieldName = "Date", Caption = "Date", Visible = true });
+            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Date", FieldName = "Date", Caption = "Ημ/νία", Visible = true });
             this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn()
             {
                 Name = "Supplier",
                 FieldName = "Supplier",
-                Caption = "Supplier",
+                Caption = "Προμηθευτής",
                 Visible = true
             });
-            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Amount", FieldName = "Amount", Caption = "Amount", Visible = true });
-            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Notes", FieldName = "Notes", Caption = "Notes", Visible = false });
+            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Amount", FieldName = "Amount", Caption = "Ποσό", Visible = true });
+            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Notes", FieldName = "Notes", Caption = "Σχόλια", Visible = false });
 
             this.gridView.CustomColumnDisplayText += GridView_CustomColumnDisplayText;
         }

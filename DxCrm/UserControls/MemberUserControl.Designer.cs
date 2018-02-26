@@ -53,7 +53,7 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
-            this.rsMore = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.Λοιπά = new DevExpress.XtraLayout.LayoutControlGroup();
             this.txtAm = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtSubYear = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtJob = new DevExpress.XtraLayout.LayoutControlItem();
@@ -62,7 +62,7 @@
             this.txtSubDt = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtNotes = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtType = new DevExpress.XtraLayout.LayoutControlItem();
-            this.rsContact = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.Στοιχεία = new DevExpress.XtraLayout.LayoutControlGroup();
             this.txtFatherName = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtBirthday = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtMotherName = new DevExpress.XtraLayout.LayoutControlItem();
@@ -102,7 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rsMore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Λοιπά)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSubYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtJob)).BeginInit();
@@ -111,7 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubDt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rsContact)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Στοιχεία)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFatherName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMotherName)).BeginInit();
@@ -126,11 +126,11 @@
             // txtBirthplace
             // 
             txtBirthplace.Control = this.txtBirthplaceEdit;
-            txtBirthplace.CustomizationFormText = "rsBirthplace";
+            txtBirthplace.CustomizationFormText = "Τόπος Γέννησης";
             txtBirthplace.Location = new System.Drawing.Point(378, 24);
             txtBirthplace.Name = "txtBirthplace";
             txtBirthplace.Size = new System.Drawing.Size(378, 24);
-            txtBirthplace.Text = "rsBirthplace";
+            txtBirthplace.Text = "Τόπος Γέννησης";
             txtBirthplace.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtBirthplaceEdit
@@ -203,6 +203,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtTypeEdit.Properties.DisplayMember = "Description";
             this.txtTypeEdit.Properties.KeyMember = "Id";
+            this.txtTypeEdit.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.StartsWith;
+            this.txtTypeEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.OnlyInPopup;
             this.txtTypeEdit.Size = new System.Drawing.Size(230, 20);
             this.txtTypeEdit.StyleController = this.dataLayoutControl1;
             this.txtTypeEdit.TabIndex = 22;
@@ -413,16 +415,16 @@
             // 
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 24);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
-            this.tabbedControlGroup1.SelectedTabPage = this.rsMore;
+            this.tabbedControlGroup1.SelectedTabPage = this.Λοιπά;
             this.tabbedControlGroup1.SelectedTabPageIndex = 1;
             this.tabbedControlGroup1.Size = new System.Drawing.Size(780, 532);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.rsContact,
-            this.rsMore});
+            this.Στοιχεία,
+            this.Λοιπά});
             // 
-            // rsMore
+            // Λοιπά
             // 
-            this.rsMore.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.Λοιπά.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.txtAm,
             this.txtSubYear,
             this.txtJob,
@@ -431,9 +433,9 @@
             this.txtSubDt,
             this.txtNotes,
             this.txtType});
-            this.rsMore.Location = new System.Drawing.Point(0, 0);
-            this.rsMore.Name = "rsMore";
-            this.rsMore.Size = new System.Drawing.Size(756, 486);
+            this.Λοιπά.Location = new System.Drawing.Point(0, 0);
+            this.Λοιπά.Name = "Λοιπά";
+            this.Λοιπά.Size = new System.Drawing.Size(756, 486);
             // 
             // txtAm
             // 
@@ -441,27 +443,27 @@
             this.txtAm.Location = new System.Drawing.Point(0, 0);
             this.txtAm.Name = "txtAm";
             this.txtAm.Size = new System.Drawing.Size(308, 24);
-            this.txtAm.Text = "rsAm";
+            this.txtAm.Text = "Α.Μ";
             this.txtAm.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtSubYear
             // 
             this.txtSubYear.Control = this.txtSubDtEdit;
-            this.txtSubYear.CustomizationFormText = "rsSubYear";
+            this.txtSubYear.CustomizationFormText = "Έτος Εγγραφής";
             this.txtSubYear.Location = new System.Drawing.Point(0, 24);
             this.txtSubYear.Name = "txtSubYear";
             this.txtSubYear.Size = new System.Drawing.Size(222, 24);
-            this.txtSubYear.Text = "rsSubYear";
+            this.txtSubYear.Text = "Έτος Εγγραφής";
             this.txtSubYear.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtJob
             // 
             this.txtJob.Control = this.txtJobEdit;
-            this.txtJob.CustomizationFormText = "rsJob";
+            this.txtJob.CustomizationFormText = "Επάγγελμα";
             this.txtJob.Location = new System.Drawing.Point(0, 48);
             this.txtJob.Name = "txtJob";
             this.txtJob.Size = new System.Drawing.Size(756, 24);
-            this.txtJob.Text = "rsJob";
+            this.txtJob.Text = "Επάγγελμα";
             this.txtJob.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtActive
@@ -481,41 +483,42 @@
             this.rsExpDate.Location = new System.Drawing.Point(222, 24);
             this.rsExpDate.Name = "rsExpDate";
             this.rsExpDate.Size = new System.Drawing.Size(255, 24);
+            this.rsExpDate.Text = "Ημ/νία Λήξης";
             this.rsExpDate.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtSubDt
             // 
             this.txtSubDt.Control = this.dateEdit2;
-            this.txtSubDt.CustomizationFormText = "rsSubDt";
+            this.txtSubDt.CustomizationFormText = "Ημ/νία Εγγραφής";
             this.txtSubDt.Location = new System.Drawing.Point(477, 24);
             this.txtSubDt.Name = "txtSubDt";
             this.txtSubDt.Size = new System.Drawing.Size(279, 24);
-            this.txtSubDt.Text = "rsSubDt";
+            this.txtSubDt.Text = "Ημ/νία Εγγραφής";
             this.txtSubDt.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtNotes
             // 
             this.txtNotes.Control = this.txtNotesEdit;
-            this.txtNotes.CustomizationFormText = "rsNotes";
+            this.txtNotes.CustomizationFormText = "Σχόλια";
             this.txtNotes.Location = new System.Drawing.Point(0, 72);
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(756, 414);
-            this.txtNotes.Text = "rsNotes";
+            this.txtNotes.Text = "Σχόλια";
             this.txtNotes.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtType
             // 
             this.txtType.Control = this.txtTypeEdit;
-            this.txtType.CustomizationFormText = "rsType";
+            this.txtType.CustomizationFormText = "Τύπος";
             this.txtType.Location = new System.Drawing.Point(426, 0);
             this.txtType.Name = "txtType";
             this.txtType.Size = new System.Drawing.Size(330, 24);
-            this.txtType.Text = "rsType";
+            this.txtType.Text = "Τύπος";
             this.txtType.TextSize = new System.Drawing.Size(93, 13);
             // 
-            // rsContact
+            // Στοιχεία
             // 
-            this.rsContact.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.Στοιχεία.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.txtFatherName,
             this.txtBirthday,
             this.txtMotherName,
@@ -523,9 +526,9 @@
             this.layoutControlItem7,
             this.layoutControlItem8,
             this.layoutControlItem1});
-            this.rsContact.Location = new System.Drawing.Point(0, 0);
-            this.rsContact.Name = "rsContact";
-            this.rsContact.Size = new System.Drawing.Size(756, 486);
+            this.Στοιχεία.Location = new System.Drawing.Point(0, 0);
+            this.Στοιχεία.Name = "Στοιχεία";
+            this.Στοιχεία.Size = new System.Drawing.Size(756, 486);
             // 
             // txtFatherName
             // 
@@ -533,7 +536,7 @@
             this.txtFatherName.Location = new System.Drawing.Point(0, 0);
             this.txtFatherName.Name = "txtFatherName";
             this.txtFatherName.Size = new System.Drawing.Size(378, 24);
-            this.txtFatherName.Text = "rsFatherName";
+            this.txtFatherName.Text = "Όνομα Πατέρα";
             this.txtFatherName.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtBirthday
@@ -542,7 +545,7 @@
             this.txtBirthday.Location = new System.Drawing.Point(0, 24);
             this.txtBirthday.Name = "txtBirthday";
             this.txtBirthday.Size = new System.Drawing.Size(378, 24);
-            this.txtBirthday.Text = "rsBirthday";
+            this.txtBirthday.Text = "Ημε/νία Γέννησης";
             this.txtBirthday.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtMotherName
@@ -551,7 +554,7 @@
             this.txtMotherName.Location = new System.Drawing.Point(378, 0);
             this.txtMotherName.Name = "txtMotherName";
             this.txtMotherName.Size = new System.Drawing.Size(378, 24);
-            this.txtMotherName.Text = "rsMotherName";
+            this.txtMotherName.Text = "Όνομα Μητέρας";
             this.txtMotherName.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem7
@@ -584,11 +587,11 @@
             // txtSurname
             // 
             this.txtSurname.Control = this.txtSurnameEdit;
-            this.txtSurname.CustomizationFormText = "rsSurname";
+            this.txtSurname.CustomizationFormText = "Επώνυμο";
             this.txtSurname.Location = new System.Drawing.Point(0, 0);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(390, 24);
-            this.txtSurname.Text = "rsSurname";
+            this.txtSurname.Text = "Επώνυμο";
             this.txtSurname.TextSize = new System.Drawing.Size(93, 13);
             // 
             // txtName
@@ -597,7 +600,7 @@
             this.txtName.Location = new System.Drawing.Point(390, 0);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(390, 24);
-            this.txtName.Text = "rsName";
+            this.txtName.Text = "Όνομα";
             this.txtName.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem2
@@ -646,7 +649,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rsMore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Λοιπά)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSubYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtJob)).EndInit();
@@ -655,7 +658,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubDt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rsContact)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Στοιχεία)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFatherName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMotherName)).EndInit();
@@ -676,8 +679,8 @@
         private DevExpress.XtraEditors.TextEdit txtSurnameEdit;
         private DevExpress.XtraEditors.TextEdit txtNameEdit;
         private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup1;
-        private DevExpress.XtraLayout.LayoutControlGroup rsMore;
-        private DevExpress.XtraLayout.LayoutControlGroup rsContact;
+        private DevExpress.XtraLayout.LayoutControlGroup Λοιπά;
+        private DevExpress.XtraLayout.LayoutControlGroup Στοιχεία;
         private DevExpress.XtraLayout.LayoutControlItem txtSurname;
         private DevExpress.XtraLayout.LayoutControlItem txtName;
         private DevExpress.XtraEditors.TextEdit txtFatherNameEdit;

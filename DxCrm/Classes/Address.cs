@@ -10,17 +10,17 @@ namespace DxCrm.Classes
     [DisplayColumn("Addresses")]
     public class Address
     {
-        [Display(Name ="Street", AutoGenerateField = true)]
+        [Display(Name ="Διεύθυνση", AutoGenerateField = true)]
         public string Street { get; set; }
 
-        [Display(Name = "Number", AutoGenerateField = true)]
+        [Display(Name = "Νούμερο", AutoGenerateField = true)]
         public string StreetNo { get; set; }
 
-        [Display(Name = "Region", AutoGenerateField = true)]
+        [Display(Name = "Περιοχή", AutoGenerateField = true)]
 
         public string Region { get; set; }
 
-        [Display(Name = "Posta lCode", AutoGenerateField = true)]
+        [Display(Name = "Τ.Κ.", AutoGenerateField = true)]
         public int PostalCode { get; set; }
     }
 }

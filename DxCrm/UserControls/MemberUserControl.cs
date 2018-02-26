@@ -18,33 +18,36 @@ using DevExpress.XtraGrid;
 using MongoDB.Driver;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace DxCrm.UserControls
 {
     public partial class MemberUserControl : EditFormUserControl
     {
-
+       
         #region Constructors
 
-            public MemberUserControl()
+        public MemberUserControl()
             {
                 InitializeComponent();
                 var list =  new BindingList<MemberType>(DbManager.Instance.FindAsync(FilterDefinition<MemberType>.Empty));
-            //this.txtTypeEdit.Properties.DataSource = list;
-            //this.txtTypeEdit.Properties.DropDownRows = list.Count;
-            //this.txtTypeEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
-            //this.txtTypeEdit.Properties.AutoSearchColumnIndex = 1;
             this.txtTypeEdit.Properties.DataSource = list;
             this.txtTypeEdit.Properties.DropDownRows = list.Count;
-            this.txtTypeEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
+            
+            //this.txtTypeEdit.Properties.Se
+            this.txtTypeEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.OnlyInPopup;
             this.txtTypeEdit.Properties.ValueMember = "Id";
             this.txtTypeEdit.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description"));
             this.txtTypeEdit.CustomDisplayText += TxtTypeEdit_CustomDisplayText;
+
+            //this.addressGridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Name", FieldName = "Name", Caption = "Όνομα", Visible = true });
+
+
         }
 
-       
 
-            public MemberUserControl(Member m)
+
+        public MemberUserControl(Member m)
             {
                 InitializeComponent();
             }

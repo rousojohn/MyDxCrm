@@ -57,13 +57,6 @@ namespace DxCrm.UserControls
                 }
             };
 
-            
-            //this.Disposed += (sende, e) =>
-            //{
-            //    this.gridControl.MainView = this.gridView;
-               
-            //};
-
             this.gridView.RowUpdated += (sender, ex) =>
             {
                 var newAccIncome = (gridView.DataSource as BindingList<AccIncome>).Where(m => m.Id == new MongoDB.Bson.ObjectId()).ToList();
@@ -84,20 +77,20 @@ namespace DxCrm.UserControls
             {
                 Name = "Type",
                 FieldName = "Type",
-                Caption = "Type",
+                Caption = "Τύπος",
                 Visible = true
             });
 
-            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Date", FieldName = "Date", Caption = "Date", Visible = true });
+            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Date", FieldName = "Date", Caption = "Ημ/νία", Visible = true });
             this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn()
             {
                 Name = "Member",
                 FieldName = "Member",
-                Caption = "Member",
+                Caption = "Μέλος",
                 Visible = true
             });
-            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Amount", FieldName = "Amount", Caption = "Amount", Visible = true });
-            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Notes", FieldName = "Notes", Caption = "Notes", Visible = false });
+            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Amount", FieldName = "Amount", Caption = "Ποσό", Visible = true });
+            this.gridView.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn() { Name = "Notes", FieldName = "Notes", Caption = "Σχόλια", Visible = false });
 
             this.gridView.CustomColumnDisplayText += GridView_CustomColumnDisplayText;
         }
