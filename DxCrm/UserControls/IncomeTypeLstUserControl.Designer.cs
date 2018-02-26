@@ -98,7 +98,7 @@
             // 
             // bbiNew
             // 
-            this.bbiNew.Caption = "rsNew";
+            this.bbiNew.Caption = "Δημιουργία";
             this.bbiNew.Id = 16;
             this.bbiNew.ImageOptions.ImageUri.Uri = "New";
             this.bbiNew.Name = "bbiNew";
@@ -106,7 +106,7 @@
             // 
             // bbiEdit
             // 
-            this.bbiEdit.Caption = "rsEdit";
+            this.bbiEdit.Caption = "Επεξεργασία";
             this.bbiEdit.Id = 17;
             this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEdit.Name = "bbiEdit";
@@ -114,7 +114,7 @@
             // 
             // bbiDelete
             // 
-            this.bbiDelete.Caption = "rsDelete";
+            this.bbiDelete.Caption = "Διαγραφή";
             this.bbiDelete.Id = 18;
             this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDelete.Name = "bbiDelete";
@@ -122,7 +122,7 @@
             // 
             // bbiRefresh
             // 
-            this.bbiRefresh.Caption = "rsRefresh";
+            this.bbiRefresh.Caption = "Ανανέωση";
             this.bbiRefresh.Id = 19;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
@@ -144,7 +144,6 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
-            this.ribbonPageGroup1.Text = "Tasks";
             // 
             // ribbonStatusBar
             // 

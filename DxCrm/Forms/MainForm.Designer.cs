@@ -44,10 +44,8 @@
             this.navBarControl = new DevExpress.XtraNavBar.NavBarControl();
             this.employeesNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.memberLstNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
-            this.newMemberNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             this.customersNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.suppliersLstNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
-            this.suppliersNewNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             this.financeNavBarGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
@@ -56,22 +54,22 @@
             this.memberTypenavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             this.incomeTypeNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             this.outcomeTypeNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
+            this.variablesNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
+            this.newMemberNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
+            this.suppliersNewNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
             this.navigationFrame = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.membersNavigationPage = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.employeesLabelControl = new DevExpress.XtraEditors.LabelControl();
             this.suppliersNavigationPage = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.customersLabelControl = new DevExpress.XtraEditors.LabelControl();
             this.financeNavigationPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.paramsNavigationPage = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.variablesNavBarItm = new DevExpress.XtraNavBar.NavBarItem();
+            this.employeesLabelControl = new DevExpress.XtraEditors.LabelControl();
+            this.customersLabelControl = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
-            this.membersNavigationPage.SuspendLayout();
-            this.suppliersNavigationPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabbedView
@@ -110,7 +108,7 @@
             // 
             // barSubItemNavigation
             // 
-            this.barSubItemNavigation.Caption = "Navigation";
+            this.barSubItemNavigation.Caption = "Πλοήγηση";
             this.barSubItemNavigation.Id = 15;
             this.barSubItemNavigation.ImageOptions.ImageUri.Uri = "NavigationBar";
             this.barSubItemNavigation.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -121,21 +119,21 @@
             // 
             // membersBarButtonItem
             // 
-            this.membersBarButtonItem.Caption = "rsMembers";
+            this.membersBarButtonItem.Caption = "Μέλη";
             this.membersBarButtonItem.Id = 44;
             this.membersBarButtonItem.Name = "membersBarButtonItem";
             this.membersBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonNavigation_ItemClick);
             // 
             // suppliersBarButtonItem
             // 
-            this.suppliersBarButtonItem.Caption = "rsSuppliers";
+            this.suppliersBarButtonItem.Caption = "Προμηθευτές";
             this.suppliersBarButtonItem.Id = 45;
             this.suppliersBarButtonItem.Name = "suppliersBarButtonItem";
             this.suppliersBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonNavigation_ItemClick);
             // 
             // financeBarButtonItem
             // 
-            this.financeBarButtonItem.Caption = "rsFinance";
+            this.financeBarButtonItem.Caption = "Ταμείο";
             this.financeBarButtonItem.Id = 46;
             this.financeBarButtonItem.Name = "financeBarButtonItem";
             this.financeBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonNavigation_ItemClick);
@@ -146,13 +144,11 @@
             this.ribbonPageGroupNavigation,
             this.ribbonPageGroup});
             this.ribbonPage.Name = "ribbonPage";
-            this.ribbonPage.Text = "View";
             // 
             // ribbonPageGroupNavigation
             // 
             this.ribbonPageGroupNavigation.ItemLinks.Add(this.barSubItemNavigation);
             this.ribbonPageGroupNavigation.Name = "ribbonPageGroupNavigation";
-            this.ribbonPageGroupNavigation.Text = "Module";
             // 
             // ribbonPageGroup
             // 
@@ -160,7 +156,7 @@
             this.ribbonPageGroup.ItemLinks.Add(this.skinRibbonGalleryBarItem);
             this.ribbonPageGroup.Name = "ribbonPageGroup";
             this.ribbonPageGroup.ShowCaptionButton = false;
-            this.ribbonPageGroup.Text = "Appearance";
+            this.ribbonPageGroup.Text = "Εμφάνιση";
             // 
             // ribbonStatusBar
             // 
@@ -212,48 +208,34 @@
             // 
             // employeesNavBarGroup
             // 
-            this.employeesNavBarGroup.Caption = "rsMembers";
+            this.employeesNavBarGroup.Caption = "Μέλη";
             this.employeesNavBarGroup.Expanded = true;
             this.employeesNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.memberLstNavBarItm),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.newMemberNavBarItm)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.memberLstNavBarItm)});
             this.employeesNavBarGroup.Name = "employeesNavBarGroup";
             // 
             // memberLstNavBarItm
             // 
-            this.memberLstNavBarItm.Caption = "rsList";
+            this.memberLstNavBarItm.Caption = "Λίστα Μελών";
             this.memberLstNavBarItm.Name = "memberLstNavBarItm";
             this.memberLstNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
             // 
-            // newMemberNavBarItm
-            // 
-            this.newMemberNavBarItm.Caption = "rsNew";
-            this.newMemberNavBarItm.Name = "newMemberNavBarItm";
-            this.newMemberNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
-            // 
             // customersNavBarGroup
             // 
-            this.customersNavBarGroup.Caption = "rsSuppliers";
+            this.customersNavBarGroup.Caption = "Προμηθευτές";
             this.customersNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.suppliersLstNavBarItm),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.suppliersNewNavBarItm)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.suppliersLstNavBarItm)});
             this.customersNavBarGroup.Name = "customersNavBarGroup";
             // 
             // suppliersLstNavBarItm
             // 
-            this.suppliersLstNavBarItm.Caption = "rsList";
+            this.suppliersLstNavBarItm.Caption = "Λίστα Προμηθευτών";
             this.suppliersLstNavBarItm.Name = "suppliersLstNavBarItm";
             this.suppliersLstNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
             // 
-            // suppliersNewNavBarItm
-            // 
-            this.suppliersNewNavBarItm.Caption = "rsNew";
-            this.suppliersNewNavBarItm.Name = "suppliersNewNavBarItm";
-            this.suppliersNewNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
-            // 
             // financeNavBarGroup
             // 
-            this.financeNavBarGroup.Caption = "rsFinance";
+            this.financeNavBarGroup.Caption = "Ταμείο";
             this.financeNavBarGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
@@ -262,25 +244,26 @@
             // 
             // navBarItem1
             // 
-            this.navBarItem1.Caption = "rsIncome";
+            this.navBarItem1.Caption = "Έσοδα";
             this.navBarItem1.Name = "navBarItem1";
             this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
             // 
             // navBarItem2
             // 
-            this.navBarItem2.Caption = "rsOutcome";
+            this.navBarItem2.Caption = "Έξοδα";
             this.navBarItem2.Name = "navBarItem2";
             this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
             // 
             // navBarItem3
             // 
-            this.navBarItem3.Caption = "rsSummary";
+            this.navBarItem3.Caption = "Εικόνα Ταμείου";
             this.navBarItem3.Name = "navBarItem3";
             this.navBarItem3.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
             // 
             // navBarGroup1
             // 
-            this.navBarGroup1.Caption = "rsParameters";
+            this.navBarGroup1.Caption = "Παράμετροι";
+            this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.memberTypenavBarItm),
             new DevExpress.XtraNavBar.NavBarItemLink(this.incomeTypeNavBarItm),
@@ -290,21 +273,35 @@
             // 
             // memberTypenavBarItm
             // 
-            this.memberTypenavBarItm.Caption = "rsMemberType";
+            this.memberTypenavBarItm.Caption = "Τύποι Μελών";
             this.memberTypenavBarItm.Name = "memberTypenavBarItm";
             this.memberTypenavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
             // 
             // incomeTypeNavBarItm
             // 
-            this.incomeTypeNavBarItm.Caption = "rsIncomeType";
+            this.incomeTypeNavBarItm.Caption = "Τύποι Εσόδων";
             this.incomeTypeNavBarItm.Name = "incomeTypeNavBarItm";
             this.incomeTypeNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
             // 
             // outcomeTypeNavBarItm
             // 
-            this.outcomeTypeNavBarItm.Caption = "rsOutcomeType";
+            this.outcomeTypeNavBarItm.Caption = "Τύποι Εξόδων";
             this.outcomeTypeNavBarItm.Name = "outcomeTypeNavBarItm";
             this.outcomeTypeNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
+            // 
+            // variablesNavBarItm
+            // 
+            this.variablesNavBarItm.Caption = "Μεταβλητές";
+            this.variablesNavBarItm.Name = "variablesNavBarItm";
+            this.variablesNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
+            // 
+            // newMemberNavBarItm
+            // 
+            this.newMemberNavBarItm.Name = "newMemberNavBarItm";
+            // 
+            // suppliersNewNavBarItm
+            // 
+            this.suppliersNewNavBarItm.Name = "suppliersNewNavBarItm";
             // 
             // navigationFrame
             // 
@@ -330,49 +327,13 @@
             // 
             // membersNavigationPage
             // 
-            this.membersNavigationPage.Controls.Add(this.employeesLabelControl);
             this.membersNavigationPage.Name = "membersNavigationPage";
             this.membersNavigationPage.Size = new System.Drawing.Size(625, 380);
             // 
-            // employeesLabelControl
-            // 
-            this.employeesLabelControl.Appearance.Font = new System.Drawing.Font("Tahoma", 25.25F);
-            this.employeesLabelControl.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.employeesLabelControl.Appearance.Options.UseFont = true;
-            this.employeesLabelControl.Appearance.Options.UseForeColor = true;
-            this.employeesLabelControl.Appearance.Options.UseTextOptions = true;
-            this.employeesLabelControl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.employeesLabelControl.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.employeesLabelControl.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.employeesLabelControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeesLabelControl.Location = new System.Drawing.Point(0, 0);
-            this.employeesLabelControl.Name = "employeesLabelControl";
-            this.employeesLabelControl.Size = new System.Drawing.Size(161, 41);
-            this.employeesLabelControl.TabIndex = 0;
-            this.employeesLabelControl.Text = "Employees";
-            // 
             // suppliersNavigationPage
             // 
-            this.suppliersNavigationPage.Controls.Add(this.customersLabelControl);
             this.suppliersNavigationPage.Name = "suppliersNavigationPage";
             this.suppliersNavigationPage.Size = new System.Drawing.Size(625, 380);
-            // 
-            // customersLabelControl
-            // 
-            this.customersLabelControl.Appearance.Font = new System.Drawing.Font("Tahoma", 25.25F);
-            this.customersLabelControl.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.customersLabelControl.Appearance.Options.UseFont = true;
-            this.customersLabelControl.Appearance.Options.UseForeColor = true;
-            this.customersLabelControl.Appearance.Options.UseTextOptions = true;
-            this.customersLabelControl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.customersLabelControl.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.customersLabelControl.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.customersLabelControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customersLabelControl.Location = new System.Drawing.Point(0, 0);
-            this.customersLabelControl.Name = "customersLabelControl";
-            this.customersLabelControl.Size = new System.Drawing.Size(157, 41);
-            this.customersLabelControl.TabIndex = 1;
-            this.customersLabelControl.Text = "Customers";
             // 
             // financeNavigationPage
             // 
@@ -384,11 +345,19 @@
             this.paramsNavigationPage.Name = "paramsNavigationPage";
             this.paramsNavigationPage.Size = new System.Drawing.Size(625, 380);
             // 
-            // variablesNavBarItm
+            // employeesLabelControl
             // 
-            this.variablesNavBarItm.Caption = "rsVariables";
-            this.variablesNavBarItm.Name = "variablesNavBarItm";
-            this.variablesNavBarItm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.linkNavigation_LinkClicked);
+            this.employeesLabelControl.Location = new System.Drawing.Point(0, 0);
+            this.employeesLabelControl.Name = "employeesLabelControl";
+            this.employeesLabelControl.Size = new System.Drawing.Size(75, 14);
+            this.employeesLabelControl.TabIndex = 0;
+            // 
+            // customersLabelControl
+            // 
+            this.customersLabelControl.Location = new System.Drawing.Point(0, 0);
+            this.customersLabelControl.Name = "customersLabelControl";
+            this.customersLabelControl.Size = new System.Drawing.Size(75, 14);
+            this.customersLabelControl.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -410,10 +379,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).EndInit();
             this.navigationFrame.ResumeLayout(false);
-            this.membersNavigationPage.ResumeLayout(false);
-            this.membersNavigationPage.PerformLayout();
-            this.suppliersNavigationPage.ResumeLayout(false);
-            this.suppliersNavigationPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
