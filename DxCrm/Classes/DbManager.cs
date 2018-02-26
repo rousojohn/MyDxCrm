@@ -103,6 +103,8 @@ namespace DxCrm.Classes
                     }
                     else if (typeof(T) == typeof(Member))
                     {
+                        if ((i as Member).TypeId != null && (i as Member).TypeId != ObjectId.Empty.ToString())
+                            (i as Member).TypeDescr = FindSync(Builders<MemberType>.Filter.Where(t => t.Id == new ObjectId(((i as Member)).TypeId))).FirstOrDefault().Description;
                         (i as Member).MemberName = string.Format("{0} {1}", (i as Member).Surname, (i as Member).Name);
                     }
                 }
@@ -173,7 +175,7 @@ namespace DxCrm.Classes
 
 
         
-        public List<T> GetIncomesByType<T> ()
+        public List<T> GetAccSummaryByType<T> ()
         {
             if (typeof(T) != typeof(AccOutcome) && typeof(T) != typeof(AccIncome)) throw new Exception("Not AccIncome or Outcome");
 
@@ -197,13 +199,6 @@ namespace DxCrm.Classes
 
             ret = PatchItemsInList(ret, true);
             return ret;
-        }
-
-        private T Cast<T>(T typeHolder, Object x)
-        {
-            // typeHolder above is just for compiler magic
-            // to infer the type to cast x to
-            return (T)x;
         }
     }
 }

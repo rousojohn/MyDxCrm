@@ -13,7 +13,7 @@ namespace DxCrm.Classes
 
         public DateTime Date { get; set; }
 
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         public int AA { get; set; }
 

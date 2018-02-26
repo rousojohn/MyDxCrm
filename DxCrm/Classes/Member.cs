@@ -100,11 +100,14 @@ namespace DxCrm.Classes
 
         public int Age { get; set; }
 
-        public string TypeId;
+        public string TypeId { get; set; }
 
 
         [BsonIgnore]
         public string MemberName { get; set; }
+
+        [BsonIgnore]
+        public string TypeDescr { get; set; }
 
         public Member()
         {

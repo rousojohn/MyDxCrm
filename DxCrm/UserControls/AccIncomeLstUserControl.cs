@@ -15,6 +15,7 @@ using DxCrm.Classes;
 using MongoDB.Driver;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraGrid.Views.Base;
+using System.IO;
 
 namespace DxCrm.UserControls
 {
@@ -25,7 +26,9 @@ namespace DxCrm.UserControls
         private AccIncomeUserControl AccIncomeEditForm = new AccIncomeUserControl();
         BackgroundWorker bw = new BackgroundWorker();
 
-       
+        private const string GRID_LAYOUT =  Program.GRID_LAYOUTS_DIR + @"\" + "ACC_INCOME_LST.xml";
+
+        
 
         public AccIncomeLstUserControl()
         {
@@ -36,12 +39,30 @@ namespace DxCrm.UserControls
             this.bw.DoWork += Bw_DoWork;
             this.bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
 
+            
+
             this.Load += (sender, e) =>
             {
                 gridControl.DataSource = dataSource = null;
+                this.gridControl.MainView = this.gridView;
+
                 if (!bw.IsBusy)
                     bw.RunWorkerAsync();
+
+                if (File.Exists(GRID_LAYOUT))
+                {
+                    gridControl.ForceInitialize();
+                    // Restore the previously saved layout
+                    gridControl.MainView.RestoreLayoutFromXml(GRID_LAYOUT);
+                }
             };
+
+            
+            //this.Disposed += (sende, e) =>
+            //{
+            //    this.gridControl.MainView = this.gridView;
+               
+            //};
 
             this.gridView.RowUpdated += (sender, ex) =>
             {
@@ -182,6 +203,12 @@ namespace DxCrm.UserControls
         {
             this.gridView.AddNewRow();
             this.gridView.ShowEditForm();
+        }
+
+
+        public void SaveGridLayout ()
+        {
+            gridControl.MainView.SaveLayoutToXml(GRID_LAYOUT); 
         }
 
        

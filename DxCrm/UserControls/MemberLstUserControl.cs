@@ -16,6 +16,7 @@ using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using System.IO;
 
 namespace DxCrm.UserControls
 {
@@ -24,9 +25,11 @@ namespace DxCrm.UserControls
         BindingList<Member> dataSource = null;
         int editedRowHandle = -123123;
         private MemberUserControl memberEditForm = new MemberUserControl();
+        private const string GRID_LAYOUT = Program.GRID_LAYOUTS_DIR + @"\" + "MEMBERS_LST.xml";
 
+        
         #region Constructors 
-            public MemberLstUserControl()
+        public MemberLstUserControl()
             {
 
                 InitializeComponent();
@@ -41,6 +44,13 @@ namespace DxCrm.UserControls
                     gridControl.DataSource = dataSource = null;
                     if (!bw.IsBusy)
                         bw.RunWorkerAsync();
+
+                    if (File.Exists(GRID_LAYOUT))
+                    {
+                        gridControl.ForceInitialize();
+                        // Restore the previously saved layout
+                        gridControl.MainView.RestoreLayoutFromXml(GRID_LAYOUT);
+                    }
                 };
 
                 this.gridView.RowUpdated += (sender, e) =>
@@ -95,9 +105,19 @@ namespace DxCrm.UserControls
                 DoRowClick(view, pt);
             }
 
+        private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.gridView.AddNewRow();
+            this.gridView.ShowEditForm();
+        }
         #endregion
 
         #region Methods
+
+        public void SaveGridLayout()
+        {
+            gridControl.MainView.SaveLayoutToXml(GRID_LAYOUT);
+        }
 
         private void Refresh_Datasource()
         {
@@ -160,6 +180,10 @@ namespace DxCrm.UserControls
             e.EditForm.StartPosition = FormStartPosition.CenterParent;
         }
 
-      
+        private void bbiEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            this.gridView.ShowEditForm();
+        }
     }
 }

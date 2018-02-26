@@ -84,7 +84,7 @@ namespace DxCrm
         private void linkNavigation_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             int linkItemIndex = navBarControl.ActiveGroup.ItemLinks.IndexOf(e.Link);
-            (navigationFrame.SelectedPage as NavigationPage).Controls.Clear();
+            //(navigationFrame.SelectedPage as NavigationPage).Controls.Clear();
 
             // find page title with the following algorithm
             // Members --> 0    |   Suppliers --> 1     |     SelectedPageIndex  * 10
@@ -98,6 +98,9 @@ namespace DxCrm
 #region Public Methods
         public void SetContentOfPage(PageTitle page, object model)
         {
+            foreach (Control c in (navigationFrame.SelectedPage as NavigationPage).Controls)
+                c.Dispose();
+
             (navigationFrame.SelectedPage as NavigationPage).Controls.Clear();
             (navigationFrame.SelectedPage as NavigationPage).Controls.Add(
                 mapPagesToUserControls[page](model)

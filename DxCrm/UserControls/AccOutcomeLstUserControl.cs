@@ -15,6 +15,7 @@ using MongoDB.Driver;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraGrid.Views.Base;
+using System.IO;
 
 namespace DxCrm.UserControls
 {
@@ -26,7 +27,12 @@ namespace DxCrm.UserControls
         private AccOutcomeUserControl AccOutcomeEditForm = new AccOutcomeUserControl();
         BackgroundWorker bw = new BackgroundWorker();
 
+        private const string GRID_LAYOUT = Program.GRID_LAYOUTS_DIR + @"\" + "ACC_OUTCOME_LST.xml";
 
+        public void SaveGridLayout()
+        {
+            gridControl.MainView.SaveLayoutToXml(GRID_LAYOUT);
+        }
 
         public AccOutcomeLstUserControl()
         {
@@ -42,6 +48,13 @@ namespace DxCrm.UserControls
                 gridControl.DataSource = dataSource = null;
                 if (!bw.IsBusy)
                     bw.RunWorkerAsync();
+
+                if (File.Exists(GRID_LAYOUT))
+                {
+                    gridControl.ForceInitialize();
+                    // Restore the previously saved layout
+                    gridControl.MainView.RestoreLayoutFromXml(GRID_LAYOUT);
+                }
             };
 
             this.gridView.RowUpdated += (sender, ex) =>

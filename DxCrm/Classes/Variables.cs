@@ -19,7 +19,8 @@ namespace DxCrm.Classes
         String,
         Int,
         Decimal,
-        Long
+        Long,
+        Double
     }
 
     public class Variables
@@ -34,8 +35,8 @@ namespace DxCrm.Classes
             Id = new ObjectId();
             Values = new VarValues[2]
             {
-                new VarValues() {Description = "IncomeInitialValue", Type = VarType.Decimal} ,
-                new VarValues() {Description = "OutcomeInitialValue", Type = VarType.Decimal}
+                new VarValues() {Description = "IncomeInitialValue", Type = VarType.Double} ,
+                new VarValues() {Description = "OutcomeInitialValue", Type = VarType.Double}
             };
         }
     }

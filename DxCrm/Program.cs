@@ -7,6 +7,7 @@ using DevExpress.Skins;
 using DevExpress.LookAndFeel;
 using DxCrm.Classes;
 using MongoDB.Driver;
+using System.IO;
 
 namespace DxCrm
 {
@@ -14,11 +15,11 @@ namespace DxCrm
     {
         private static MainForm mainForm;
         private static readonly ApplicationSettings appSettings = ApplicationSettings.Instance;
-        //private static IMongoDatabase crmDb;
+        
 
         public static MainForm MainForm { get { return Program.mainForm; } }
         public static ApplicationSettings AppSettings { get { return appSettings; } }
-        //public static IMongoDatabase CrmDb { get { return crmDb; } }
+        public const string GRID_LAYOUTS_DIR = "GridLayouts";
 
         /// <summary>
         /// The main entry point for the application.
@@ -35,7 +36,10 @@ namespace DxCrm
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
 
-            
+            string directory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, GRID_LAYOUTS_DIR);
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
             Program.mainForm = new MainForm();
 
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = AppSettings.Theme;

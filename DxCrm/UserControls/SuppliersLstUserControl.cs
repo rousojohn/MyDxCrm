@@ -14,6 +14,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DxCrm.Classes;
 using MongoDB.Driver;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using System.IO;
 
 namespace DxCrm.UserControls
 {
@@ -23,6 +24,8 @@ namespace DxCrm.UserControls
         int editedRowHandle = -123123;
         private SupplierUserControl SupplierEditForm = new SupplierUserControl();
         BackgroundWorker bw = new BackgroundWorker();
+
+        private const string GRID_LAYOUT = Program.GRID_LAYOUTS_DIR + @"\" + "SUPPLIERS_LST.xml";
 
         #region Constructors
 
@@ -39,6 +42,13 @@ namespace DxCrm.UserControls
                 gridControl.DataSource = dataSource = null;
                 if (!bw.IsBusy)
                     bw.RunWorkerAsync();
+
+                if (File.Exists(GRID_LAYOUT))
+                {
+                    gridControl.ForceInitialize();
+                    // Restore the previously saved layout
+                    gridControl.MainView.RestoreLayoutFromXml(GRID_LAYOUT);
+                }
             };
             this.gridView.RowUpdated += (sender, e) =>
             {
@@ -71,13 +81,17 @@ namespace DxCrm.UserControls
                 gridControl.ShowRibbonPrintPreview();
             }
 
-            private void bbiEdit_ItemClick(object sender, ItemClickEventArgs e)
-            {
+        private void bbiEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.gridView.ShowEditForm();
+        }
 
-            }
-
-
-            private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
+        private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.gridView.AddNewRow();
+            this.gridView.ShowEditForm();
+        }
+        private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
             {
                 var selected = this.gridView.GetSelectedRows();
                 Supplier toDelete = (Supplier)gridView.GetRow(selected[0]);
@@ -102,6 +116,11 @@ namespace DxCrm.UserControls
         #endregion
 
         #region Methods
+
+        public void SaveGridLayout()
+        {
+            gridControl.MainView.SaveLayoutToXml(GRID_LAYOUT);
+        }
 
         private void Refresh_Datasource()
             {
@@ -146,10 +165,6 @@ namespace DxCrm.UserControls
 
         #endregion
 
-        private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            this.gridView.AddNewRow();
-            this.gridView.ShowEditForm();
-        }
+      
     }
 }
